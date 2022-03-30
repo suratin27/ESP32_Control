@@ -1,0 +1,7 @@
+{
+    "configuration": "PartitionScheme=default,FlashMode=qio,FlashFreq=80,UploadSpeed=921600,DebugLevel=none",
+    "board": "esp32:esp32:esp32wrover",
+    "port": "COM11",
+    "sketch": "tutor00_vscode_bin.ino",
+    "output": "./build"
+}

@@ -1,0 +1,8 @@
+#ifndef ESP32CONTROLCONFIG_H
+#define ESP32CONTROLCONFIG_H
+
+#define ESP32_CONTROL_DEBUG
+
+
+
+#endif

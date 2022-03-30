@@ -1,0 +1,1 @@
+1.ลง lib เพิ่มชื่อ EasyNextionLibrary สามารถค้นหาได้จาก arduino library manager ครับ
