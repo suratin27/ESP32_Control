@@ -11,6 +11,7 @@
   //#include "ESP32Time.h"
   #include "ESP32ControlSchedule.h"
   #include "ModbusIP_ESP8266.h"
+  #include "ESP32Monitor.h"
   //const bool DEBUG = true;
 #endif
 
