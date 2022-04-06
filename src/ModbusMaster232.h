@@ -114,6 +114,9 @@ Commented function crc16 not supported by ESP8266 - PDAControl
 Arduino class library for communicating with Modbus slaves over 
 RS232/485 (via RTU protocol).
 */
+//Null callback
+void callback_func_null(uint8_t func, uint16_t dAdd, bool iBit ,uint16_t iVal ,float fVal);
+
 class ModbusMaster232{
   public:
   /*--------------- Definition by suratin --------------------------*/
@@ -317,6 +320,12 @@ class ModbusMaster232{
     bool writeSingleRegisterFI(uint8_t,uint16_t, float);
     //parameter: slave address ,device address ,float value (sent all inverted byte)
     bool writeSingleRegisterFAI(uint8_t,uint16_t, float);
+
+    //Callback function for use to set any data
+    //parameter: function code ,device address ,bit data ,int data ,float data
+    void(*callback_func) (uint8_t func, uint16_t dAdd,bool iBit ,uint16_t iVal ,float fVal);
+    //Callback function for use to set any data
+    void setCallback(void(*_callBack)(uint8_t func, uint16_t dAdd,bool iBit ,uint16_t iVal ,float fVal));
     
   private:
     volatile uint8_t  _u8SerialPort;                                      ///< serial port (0..3) initialized in constructor
@@ -359,26 +368,6 @@ class ModbusMaster232{
     // idle callback function; gets called during idle time between TX and RX
     void (*_idle)();
 
-  
-//Commented function makeWord not supported by ESP8266 - PDAControl
-  //uint16_t makeWord(uint16_t w);
-//  uint16_t makeWord(uint8_t h, uint8_t l);
-
 };
-/*
-class ModbusManeger{
-  public:
-    ModbusManeger();
-    void setConfig(uint8_t,uint16_t,uint8_t);
-    bool reqInt(uint8_t,uint8_t,uint16_t,uint16_t);     //slave add,FC,readAdd,readCount
-    
-  private:
-    ModbusMaster232 myModbus(0,20,3);       //Arg(port,timeout,retry)
-};*/
 
 #endif
-
-/**
-@example examples/Basic/Basic.pde
-@example examples/PhoenixContact_nanoLC/PhoenixContact_nanoLC.pde
-*/

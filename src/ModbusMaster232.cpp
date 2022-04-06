@@ -62,10 +62,16 @@ ModbusMaster232::ModbusMaster232(uint8_t u8MBSlave){
 }
 #endif
 
+//Null callback
+void callback_func_null(uint8_t func, uint16_t dAdd, bool iBit ,uint16_t iVal ,float fVal){
+
+}
+
 ModbusMaster232::ModbusMaster232(void){
   _u8SerialPort = 0;
   port = &Serial;
   _u8MBSlave = 1;
+  setCallback(callback_func_null);
 }
 
 ModbusMaster232::ModbusMaster232(uint8_t _serialNo){
@@ -81,6 +87,7 @@ ModbusMaster232::ModbusMaster232(uint8_t _serialNo){
   }
   
   _u8MBSlave = 1;
+  setCallback(callback_func_null);
 }
 
 ModbusMaster232::ModbusMaster232(uint8_t _serialNo,uint8_t u8MBSlave){
@@ -92,6 +99,7 @@ ModbusMaster232::ModbusMaster232(uint8_t _serialNo,uint8_t u8MBSlave){
   }
   _u8SerialPort = 0;
   _u8MBSlave = u8MBSlave;
+  setCallback(callback_func_null);
 }
 
 ModbusMaster232::ModbusMaster232(uint8_t _serialNo,unsigned long _timeout,uint8_t _tryCount){
@@ -116,6 +124,7 @@ ModbusMaster232::ModbusMaster232(uint8_t _serialNo,unsigned long _timeout,uint8_
   
   _u8SerialPort = 0;
   _u8MBSlave = 1;
+  setCallback(callback_func_null);
 }
 
 
@@ -1010,6 +1019,7 @@ uint8_t ModbusMaster232::readCoilsB(uint8_t _slave,uint16_t _address){
   }
 
   clearResponseBuffer();
+  callback_func(0x01,_address,Result,0,0);
   return Result;
 }
 uint16_t ModbusMaster232::readCoilsU(uint8_t _slave,uint16_t _address,uint16_t _readcount){
@@ -1039,6 +1049,7 @@ uint16_t ModbusMaster232::readCoilsU(uint8_t _slave,uint16_t _address,uint16_t _
   }
   
   clearResponseBuffer();
+  callback_func(0x01,_address,0,TempU16,0);
   return TempU16;
 }
 uint8_t ModbusMaster232::readDiscreteInputsB(uint8_t _slave,uint16_t _address,uint8_t _prefferadd){
@@ -1104,6 +1115,7 @@ uint8_t ModbusMaster232::readDiscreteInputsB(uint8_t _slave,uint16_t _address,ui
 
   clearResponseBuffer();
   //clearTransmitBuffer()
+  callback_func(0x02,_address,Result,0,0);
   return Result;
 }
 uint16_t ModbusMaster232::readDiscreteInputsU(uint8_t _slave,uint16_t _address,uint16_t _readcount){
@@ -1135,7 +1147,7 @@ uint16_t ModbusMaster232::readDiscreteInputsU(uint8_t _slave,uint16_t _address,u
   
   clearResponseBuffer();
   //clearTransmitBuffer();
-
+  callback_func(0x02,_address,0,TempU16,0);
   return TempU16;
 }
 uint8_t ModbusMaster232::writeSingleCoilB(uint8_t _slave,uint16_t _address, uint8_t u8State){
@@ -1178,6 +1190,7 @@ uint16_t ModbusMaster232::readHoldingRegistersI(uint8_t _slave,uint16_t _address
   
   clearResponseBuffer();
   //clearTransmitBuffer();
+  callback_func(0x03,_address,0,Temp,0);
   return Temp;
 }
 uint16_t ModbusMaster232::readInputRegistersI(uint8_t _slave,uint16_t _address){
@@ -1210,6 +1223,7 @@ uint16_t ModbusMaster232::readInputRegistersI(uint8_t _slave,uint16_t _address){
   
   clearResponseBuffer();
   //clearTransmitBuffer();
+  callback_func(0x04,_address,0,Temp,0);
   return Temp;
 }
 void ModbusMaster232::readHoldingRegistersIn(uint8_t _slave,uint16_t _address,uint16_t _readCount,uint16_t* pArr){
@@ -1285,6 +1299,7 @@ float ModbusMaster232::readHoldingRegistersF(uint8_t _slave,uint16_t _address){
   clearResponseBuffer();
   //clearTransmitBuffer();
   fNum = * (float*) &Temp[0];
+  callback_func(0x03,_address,0,0,fNum);
   return fNum;
 }
 float ModbusMaster232::readHoldingRegistersFI(uint8_t _slave,uint16_t _address){
@@ -1322,7 +1337,7 @@ float ModbusMaster232::readHoldingRegistersFI(uint8_t _slave,uint16_t _address){
   clearResponseBuffer();
   //clearTransmitBuffer();
   fNum = * (float*) &Temp[0];
-
+  callback_func(0x03,_address,0,0,fNum);
   //Pulse_num = *(int32_t*) &iSlave.Hreg(100);
   return fNum;
 }
@@ -1368,6 +1383,7 @@ float ModbusMaster232::readHoldingRegistersFAI(uint8_t _slave,uint16_t _address)
   clearResponseBuffer();
   
   fNum = * (float*) &Temp[0];
+  callback_func(0x03,_address,0,0,fNum);
   return fNum;
 }
 float ModbusMaster232::readInputRegistersF(uint8_t _slave,uint16_t _address){
@@ -1407,6 +1423,7 @@ float ModbusMaster232::readInputRegistersF(uint8_t _slave,uint16_t _address){
   clearResponseBuffer();
   //clearTransmitBuffer();
   fNum = * (float*) &Temp[0];
+  callback_func(0x04,_address,0,0,fNum);
   return fNum;
 }
 float ModbusMaster232::readInputRegistersFI(uint8_t _slave,uint16_t _address){
@@ -1449,6 +1466,7 @@ float ModbusMaster232::readInputRegistersFI(uint8_t _slave,uint16_t _address){
   clearResponseBuffer();
   //clearTransmitBuffer();
   fNum = * (float*) &Temp[0];
+  callback_func(0x04,_address,0,0,fNum);
   return fNum;
 }
 
@@ -1530,7 +1548,6 @@ bool ModbusMaster232::writeSingleRegisterI(uint8_t _slave,uint16_t _address,int1
   return result;
 }
 
-/*
-ModbusManeger:ModbusManeger(){
-
-}*/
+void ModbusMaster232::setCallback(void(*_callBack)(uint8_t func, uint16_t sID ,bool iBit ,uint16_t iVal ,float fVal)){
+  callback_func = _callBack;
+}
