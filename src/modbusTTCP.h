@@ -143,14 +143,24 @@ class ModbusTCPMaster : public ModbusMaster {
 		bool _readDiscreteInputs(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity);
 		bool _readHoldingRegisters(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity);
 		bool _readInputRegisters(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity);
-		bool writeSingleCoil(WiFiClient &client, uint8_t slave, uint16_t addr, bool value);
-		bool writeSingleRegister(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t value);
-		bool writeMultipleCoils(WiFiClient &client, uint8_t slave, uint16_t addr, const bool *values, uint16_t quantity);
-		bool writeMultipleRegisters(WiFiClient &client, uint8_t slave, uint16_t addr, const uint16_t *values, uint16_t quantity);
 
+		//- Approved by Suratin
+
+		//parameter: wifi client ,slave address ,device address ,bit value
+		bool writeSingleCoil(WiFiClient &client, uint8_t slave, uint16_t addr, bool value);
+		//parameter: wifi client ,slave address ,device address ,int value
+		bool writeSingleRegister(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t value);
+		//parameter: wifi client ,slave address ,device address ,(array) bit value ,write quantity
+		bool writeMultipleCoils(WiFiClient &client, uint8_t slave, uint16_t addr, const bool *values, uint16_t quantity);
+		//parameter: wifi client ,slave address ,device address ,(array) int value ,write quantity
+		bool writeMultipleRegisters(WiFiClient &client, uint8_t slave, uint16_t addr, const uint16_t *values, uint16_t quantity);
+		//parameter: wifi client ,slave address ,device address ,read quantity ,&data storage (array bit)
 		void readCoils(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity, bool* storage);
+		//parameter: wifi client ,slave address ,device address ,read quantity ,&data storage (array bit)
 		void readDiscreteInputs(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity, bool* storage);
+		//parameter: wifi client ,slave address ,device address ,read quantity ,&data storage (array int)
     void readHoldingRegisters(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity, uint16_t* storage);
+		//parameter: wifi client ,slave address ,device address ,read quantity ,&data storage (array int)
 		void readInputRegisters(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity, uint16_t* storage);
 
 		virtual ModbusResponse available();

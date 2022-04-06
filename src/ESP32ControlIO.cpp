@@ -66,9 +66,9 @@ void toggleLed(){
 
 bool readInput(uint8_t _i){
   if(myIO == 0){
-    return digitalRead(Ix10RS[_i]);
+    return !digitalRead(Ix10RS[_i]);
   }else{
-    return digitalRead(Ix10[_i]);
+    return !digitalRead(Ix10[_i]);
   }
 }
 

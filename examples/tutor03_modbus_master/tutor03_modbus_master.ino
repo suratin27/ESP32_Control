@@ -34,7 +34,8 @@ void setup(){
 void loop(){
   if(millis() - lastTime > peroid){                     //- อ่านค่าทุกๆ 1 วินาที
     lastTime = millis();
-    float InReg = myMaster.readInputRegistersFI(1,0);   //- อ่านค่าจาก slave1 - inputRegistor 0 แบบกลับ word
-    myMaster.writeSingleRegisterF(2,0,InReg);           //- เขียนค่าที่ได้ไปที่ slave2 - holdingRegistor 0 แบบไม่กลับ word
+    float InReg = myMaster.readInputRegistersFI(1,0);       //- อ่านค่าจาก slave1 - inputRegistor 0 แบบกลับ word
+    int16_t InValue = myMaster.readInputRegistersI(1,0);    //- อ่านค่าจาก slave1 - inputRegistor 0 int16
+    myMaster.writeSingleRegisterF(2,0,InReg);               //- เขียนค่าที่ได้ไปที่ slave2 - holdingRegistor 0 แบบไม่กลับ word
   }
 }

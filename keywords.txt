@@ -23,15 +23,12 @@ setOutput			KEYWORD2
 resetOutput			KEYWORD2
 toggleOutput		KEYWORD2
 clearOutput			KEYWORD2
-IOTask				KEYWORD2
+getOutput			KEYWORD2	
 
 ModbusSlaveSerial	KEYWORD2
 setSlaveId			KEYWORD2
 getSlaveId			KEYWORD2
 task				KEYWORD2
-receive				KEYWORD2
-sendPDU				KEYWORD2
-send				KEYWORD2
 
 ModbusMaster232			KEYWORD2
 begin					KEYWORD2

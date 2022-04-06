@@ -6,7 +6,7 @@
 initIO(1);                     - เริ่มต้นการใช้งาน I/O ,พารามิเตอร์(board model) 0 = 1.0RS ,1 = 1.0
 setLed();                     - เซ็ตค่า Status LED 
 resetLed();                   - รีเซ็ตค่า Status LED 
-toggleLed(uint8_t _pin);      - สลับสถานะ ของ Status LED 
+toggleLed();                  - สลับสถานะ ของ Status LED 
 readInput(uint8_t _i);        - อ่านค่าจากอินพุท (อินพุทที่ต้องการอ่านค่า)
 setOutput(uint8_t _o);        - เซ็ตค่าเอ้าพุท (เอ้าพุทที่ต้องการ เซ็ตค่า)
 resetOutput(uint8_t _o);      - รีเซ็ตค่าเอ้าพุท (เอ้าพุทที่ต้องการ รีเซ็ตค่า)
@@ -43,35 +43,35 @@ void loop(){
 
   toggleLed();
 
-  if(!readInput(0)){
+  if(readInput(0)){
     Serial.println("0");
     Serial2.println("0");
   }
-  if(!readInput(1)){
+  if(readInput(1)){
     Serial.println("1");
     Serial2.println("1");
   }
-  if(!readInput(2)){
+  if(readInput(2)){
     Serial.println("2");
     Serial2.println("2");
   }
-  if(!readInput(3)){
+  if(readInput(3)){
     Serial.println("3");
     Serial2.println("3");
   }
-  if(!readInput(4)){
+  if(readInput(4)){
     Serial.println("4");
     Serial2.println("4");
   }
-  if(!readInput(5)){
+  if(readInput(5)){
     Serial.println("5");
     Serial2.println("5");
   }
-  if(!readInput(6)){
+  if(readInput(6)){
     Serial.println("6");
     Serial2.println("6");
   }
-  if(!readInput(7)){
+  if(readInput(7)){
     Serial.println("7");
     Serial2.println("7");
   }

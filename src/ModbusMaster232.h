@@ -281,23 +281,42 @@ class ModbusMaster232{
     /*
     Edited by Suratin
     */
+    //parameter: slave address ,device address
     uint8_t  readCoilsB(uint8_t,uint16_t);    //Return 0,1,FF
+    //parameter: slave address ,device address ,read count
     uint16_t readCoilsU(uint8_t,uint16_t,uint16_t);
+    //parameter: slave address ,device address ,bit position
     uint8_t  readDiscreteInputsB(uint8_t,uint16_t,uint8_t);    //Return 0,1,FF
+    //parameter: slave address ,device address ,read count
     uint16_t readDiscreteInputsU(uint8_t,uint16_t,uint16_t);
+    //parameter: slave address ,device address ,bit position
     uint8_t  writeSingleCoilB(uint8_t,uint16_t, uint8_t);
+
+    //parameter: slave address ,device address
     uint16_t readHoldingRegistersI(uint8_t,uint16_t);
-    uint16_t readInputRegistersI(uint8_t,uint16_t);
+    //parameter: slave address ,device address ,read count ,&store registor
     void readHoldingRegistersIn(uint8_t,uint16_t,uint16_t,uint16_t*);
+    //parameter: slave address ,device address >> return data holding value (float)
     float   readHoldingRegistersF(uint8_t,uint16_t);
+    //parameter: slave address ,device address >> return data holding value (float invert word) 
     float   readHoldingRegistersFI(uint8_t,uint16_t);
+    //parameter: slave address ,device address >> return data holding value (float invert all byte)
     float   readHoldingRegistersFAI(uint8_t,uint16_t);
+    //parameter: slave address ,device address
+    uint16_t readInputRegistersI(uint8_t,uint16_t);
+    //parameter: slave address ,device address >> return data holding value (float)
     float   readInputRegistersF(uint8_t,uint16_t);
+    //parameter: slave address ,device address >> return data holding value (float invert word) 
     float   readInputRegistersFI(uint8_t,uint16_t);
-    bool writeSingleRegisterF(uint8_t,uint16_t, float);
-    bool writeSingleRegisterFI(uint8_t,uint16_t, float);
-    bool writeSingleRegisterFAI(uint8_t,uint16_t, float);
+
+    //parameter: slave address ,device address ,int16_t value
     bool writeSingleRegisterI(uint8_t,uint16_t,int16_t);
+    //parameter: slave address ,device address ,float value
+    bool writeSingleRegisterF(uint8_t,uint16_t, float);
+    //parameter: slave address ,device address ,float value (sent inverted word)
+    bool writeSingleRegisterFI(uint8_t,uint16_t, float);
+    //parameter: slave address ,device address ,float value (sent all inverted byte)
+    bool writeSingleRegisterFAI(uint8_t,uint16_t, float);
     
   private:
     volatile uint8_t  _u8SerialPort;                                      ///< serial port (0..3) initialized in constructor
