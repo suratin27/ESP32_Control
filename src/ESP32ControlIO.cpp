@@ -6,7 +6,7 @@ void initIO(uint8_t _io){
   myIO = _io;
   if(_io == 0){
     Serial.println("--------------------------------.");
-    Serial.println(" Module model: ESP32 Control v1.0RS");
+    Serial.println(" Module model: ESP32 Control v1.0RS - v1.0RX - RX-32U");
     Serial.println("--------------------------------.");
   }
 
@@ -114,4 +114,23 @@ void setAllOutput(){
   for(uint8_t i=0;i<8;i++){
     setOutput(i);
   }
+}
+
+void toggleSTS(uint8_t _led){
+  if(_led == 0){
+    toggleOutput(6);
+  }else if(_led == 1){
+    toggleOutput(5);
+  }else if(_led == 2){
+    toggleOutput(4);
+  }else if(_led == 3){
+    toggleOutput(7);
+  }
+}
+
+void clearSTS(){
+  resetOutput(4);
+  resetOutput(5);
+  resetOutput(6);
+  resetOutput(7);
 }

@@ -13,7 +13,7 @@ const uint8_t Qx10[8] = {13,14,27,26,25,33,32,2};
 const uint8_t Ix10RS[8] = {39,36,35,34,21,19,18,4};
 const uint8_t Qx10RS[8] = {13,14,27,26,25,33,32,2};
 
-//parameter: board version ,0 for v1.0RS and 1.0RX ,1 for v1.0
+//parameter: board version ,0 for v1.0RS,v1.0RX,RX-32U and 1.0RX ,1 for v1.0
 void initIO(uint8_t _io = 0);
 //parameter: none
 void setLed();
@@ -35,5 +35,9 @@ void toggleOutput(uint8_t _o);
 void clearAllOutput();
 //parameter: node
 void setAllOutput();
+//parameter: Status led
+void toggleSTS(uint8_t _led);
+//parameter: none
+void clearSTS();
 
 #endif
