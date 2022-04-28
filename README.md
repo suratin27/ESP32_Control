@@ -1,6 +1,6 @@
-# ESP32_Control v 1.2.2
+# ESP32_Control v 1.2.3
 ESP32 Control library for All TF ESP32 Control module
-Last updated 2/4/2022
+Last updated 28/4/2022
 - v1.0RX added
 - RX-32U version added
 - update IO Function
