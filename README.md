@@ -1,3 +1,8 @@
+# ESP32_Control v 1.2.4
+ESP32 Control library for All TF ESP32 Control module
+Last updated 4/5/2022
+- Sample tutor07 Modbus TCP Slave added
+- Improved keywords
 # ESP32_Control v 1.2.3
 ESP32 Control library for All TF ESP32 Control module
 Last updated 28/4/2022
