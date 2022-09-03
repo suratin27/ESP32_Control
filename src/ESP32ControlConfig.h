@@ -1,8 +1,7 @@
 #ifndef ESP32CONTROLCONFIG_H
 #define ESP32CONTROLCONFIG_H
+#include <Arduino.h>
 
-#define ESP32_CONTROL_DEBUG
-
-
+uint8_t board_version;
 
 #endif

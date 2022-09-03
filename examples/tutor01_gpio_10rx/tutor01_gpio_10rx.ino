@@ -20,14 +20,14 @@ setAllOutput();               - เซ็ตค่าเอ้าพุท ท�
 
 unsigned long lastime = 0;
 bool status = false;
-const int peroid = 5000;
+const int peroid = 10000;
 uint8_t OutPos = 0;
 const uint8_t RX2 = 22;       //- ขา RX ของ rs485
 const uint8_t TX2 = 23;       //- ขา TX ของ rs485
 
 void setup(){
   Serial.begin(9600);         //- Serial0 คือ USB port
-  Serial1.begin(115200,SERIAL_8N1,RX2,TX2); 
+  Serial2.begin(115200,SERIAL_8N1,RX2,TX2); 
   initIO();                   //- Init อินพุท และ เอ้าพุท
   setAllOutput();
 }
@@ -36,7 +36,7 @@ void loop(){
   if(millis() - lastime > peroid){
     lastime = millis();
     if(status){
-      clearAllOutput();
+      //clearAllOutput();
       status = false;
     }else{
       setAllOutput();

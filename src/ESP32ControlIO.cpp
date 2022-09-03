@@ -6,44 +6,66 @@ void initIO(uint8_t _io){
   myIO = _io;
   if(_io == 0){
     Serial.println("--------------------------------.");
-    Serial.println(" Module model: ESP32 Control v1.0RS - v1.0RX - RX-32U");
+    Serial.println(" Module model: ESP32 Control v1.0RS");
     Serial.println("--------------------------------.");
+    Serial.println("Init Input pin.");
+      for(uint8_t i=0;i<8;i++){ //Init I output
+        pinMode(Ix10RS[i],INPUT);
+      }
+    Serial.println("Init - OK.");
+    Serial.println("-----------------------.");
+    Serial.println("Init Output pin.");
+      for(uint8_t i=0;i<8;i++){ //Init Q output and set to Low
+        pinMode(Qx10RS[i],OUTPUT);
+        digitalWrite(Qx10RS[i],LOW);
+      }
+  }else if(_io == 1){
+    Serial.println("--------------------------------.");
+    Serial.println(" Module model: ESP32 Control v1.0RX");
+    Serial.println("--------------------------------.");
+    Serial.println("Init Input pin.");
+      for(uint8_t i=0;i<8;i++){ //Init I output
+        pinMode(Ix10RS[i],INPUT);
+      }
+    Serial.println("Init - OK.");
+    Serial.println("-----------------------.");
+    Serial.println("Init Output pin.");
+      for(uint8_t i=0;i<8;i++){ //Init Q output and set to Low
+        pinMode(Qx10RS[i],OUTPUT);
+        digitalWrite(Qx10RS[i],LOW);
+      }
+  }else if(_io == 2){
+    Serial.println("--------------------------------.");
+    Serial.println(" Module model: MINIPLC RLX 32U");
+    Serial.println("--------------------------------.");
+    Serial.println("Init Input pin.");
+      for(uint8_t i=0;i<8;i++){ //Init I output
+        pinMode(Ix10RS[i],INPUT);
+      }
+    Serial.println("Init - OK.");
+    Serial.println("-----------------------.");
+    Serial.println("Init Output pin.");
+      for(uint8_t i=0;i<8;i++){ //Init Q output and set to Low
+        pinMode(Qx10RS[i],OUTPUT);
+        digitalWrite(Qx10RS[i],LOW);
+      }
+  }else if(_io == 3){
+    Serial.println("--------------------------------.");
+    Serial.println(" Module model: LAGACY MODEL");
+    Serial.println("--------------------------------.");
+    Serial.println("Init Input pin.");
+      for(uint8_t i=0;i<8;i++){ //Init I output
+        pinMode(Ix10[i],INPUT);
+      }
+    Serial.println("Init - OK.");
+    Serial.println("-----------------------.");
+    Serial.println("Init Output pin.");
+      for(uint8_t i=0;i<8;i++){ //Init Q output and set to Low
+        pinMode(Qx10[i],OUTPUT);
+        digitalWrite(Qx10[i],LOW);
+      }
   }
-
-  if(_io == 1){
-    Serial.println("--------------------------------.");
-    Serial.println(" Module model: ESP32 Control v1.0");
-    Serial.println("--------------------------------.");
-  } 
      
-  Serial.println("Init Input pin.");
-  if(myIO == 0){
-    for(uint8_t i=0;i<8;i++){ //Init I output
-      pinMode(Ix10RS[i],INPUT);
-    }
-  }else if(myIO == 1){
-    for(uint8_t i=0;i<8;i++){ //Init I output
-      pinMode(Ix10[i],INPUT);
-    }
-  }
-  Serial.println("Init - OK.");
-  Serial.println("-----------------------.");
-
-  Serial.println("Init Output pin.");
-  if(myIO == 0){
-    for(uint8_t i=0;i<8;i++){ //Init Q output and set to Low
-      pinMode(Qx10RS[i],OUTPUT);
-      digitalWrite(Qx10RS[i],LOW);
-    }
-  }else if(myIO == 1){
-    for(uint8_t i=0;i<8;i++){ //Init Q output and set to Low
-      pinMode(Qx10[i],OUTPUT);
-      digitalWrite(Qx10[i],LOW);
-    }
-  }
-  Serial.println("Init - OK.");
-  Serial.println("-----------------------.");
-
   Serial.println("-----------------------.");
   Serial.println("Init Working LED Status.");
   pinMode(WOR_LED,OUTPUT);

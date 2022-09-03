@@ -20,32 +20,42 @@ clearSTS();                   - เคลียร์สถานะ LED Status
 
 unsigned long lastime = 0;
 bool status = false;
-const int peroid = 5000;
+const int peroid = 3000;
 uint8_t OutPos = 0;
 const uint8_t RX2 = 22; //- ขา RX ของ rs485
 const uint8_t TX2 = 23; //- ขา TX ของ rs485
 
 void setup(){
   Serial.begin(9600); //- Serial0 คือ USB port
-  Serial1.begin(115200,0x800001c,RX2,TX2);
+  Serial2.begin(115200,0x800001c,RX2,TX2);
   initIO(); //- Init อินพุท และ เอ้าพุท
+  setOutput(0);
+  setOutput(1);
+  setOutput(2);
+  setOutput(3);
 }
 
 void loop(){
   if(millis() - lastime > peroid){
     lastime = millis();
     if(status){
-      setOutput(2); //- สั่ง Set output 2
+      toggleSTS(3); //- toggle Status LED 3 --> ตรงบริเวณ MCU
+      toggleSTS(2); //- toggle Status LED 2 --> ตรงบริเวณ MCU
       toggleSTS(1); //- toggle Status LED 1 --> ตรงบริเวณ MCU
+
+      //toggleOutput(0);
+      //toggleOutput(1);
+      //toggleOutput(2);
+      //toggleOutput(3);
       status = false;
     }else{
-      resetOutput(2); //- สั่ง Reset output 2
+      toggleSTS(3); //- toggle Status LED 3 --> ตรงบริเวณ MCU
+      toggleSTS(2); //- toggle Status LED 2 --> ตรงบริเวณ MCU
       toggleSTS(1); //- toggle Status LED 1 --> ตรงบริเวณ MCU
       status = true;
     }
   }
 
-  toggleLed();
   toggleSTS(0); //- toggle Status LED 0 --> ตรงบริเวณ MCU
 
   if(readInput(0)){

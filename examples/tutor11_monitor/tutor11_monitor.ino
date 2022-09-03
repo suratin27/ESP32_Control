@@ -1,10 +1,6 @@
 #include <WiFi.h>
-//#include <AsyncTCP.h>
-//#include <ESPAsyncWebServer.h>
-//#include <Arduino_JSON.h>
-//#include "SPIFFS.h"
 
-#define ESP32_CONTROL_10RS
+#define ESP32_CONTROL_10RX          //- Define ESP32 Control v1.0RX board
 #include <ESP32Control.h>
 
 

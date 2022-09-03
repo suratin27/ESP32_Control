@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ESP32 Control v 1.0 RX -- Monitor - </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!--=============== BOXICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <nav class="nav container">
+          <a href="#" class="nav__logo">TF Product</a>
+
+          <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                  <li class="nav__item n0">
+                      <a href="#home" class="nav__link active-link">
+                          <i class='bx bx-home-alt nav__icon'></i>
+                          <span class="nav__name">Home</span>
+                      </a>
+                  </li>
+                  
+                  <li class="nav__item n1">
+                      <a href="#memory-m" class="nav__link">
+                          <i class='bx bx-memory-card nav__icon'></i>
+                          <span class="nav__name">Memory M</span>
+                      </a>
+                  </li>
+
+                  <li class="nav__item n2">
+                      <a href="#memory-d" class="nav__link">
+                          <i class='bx bx-memory-card nav__icon'></i>
+                          <span class="nav__name">Memory D</span>
+                      </a>
+                  </li>
+
+                  <li class="nav__item n3">
+                      <a href="#memory-f" class="nav__link">
+                          <i class='bx bx-memory-card nav__icon'></i>
+                          <span class="nav__name">Memory F</span>
+                      </a>
+                  </li>
+
+                  <li class="nav__item n4">
+                      <a href="#diagnostic" class="nav__link">
+                          <i class='bx bx-alarm-exclamation nav__icon'></i>
+                          <span class="nav__name">Diagnostic</span>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <!--
+            <img src="assets/img/perfil.png" alt="" class="nav__img">
+          -->    
+      </nav>
+    </header>
+    <main>
+      <!--=============== HOME ===============-->
+      <section class="container section section__height" id="home">
+          <h2 id = 'product_name' class="section__title">ESP32 Control Monitor v 1.0RX </h2>
+          <div id='esp-element' class="element">
+            <img src="esp_control_10.png" alt="esp_control_10"> 
+            <div class="esp_control_lamp">
+              <div class="ioa_contain">
+                <div class="io_contain">
+                  <div class="io_lamp" id="i0_lamp"></div>
+                  <p class="io_txt">I0</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="i1_lamp"></div>
+                  <p class="io_txt">I1</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="i2_lamp"></div>
+                  <p class="io_txt">I2</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="i3_lamp"></div>
+                  <p class="io_txt">I3</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="i4_lamp"></div>
+                  <p class="io_txt">I4</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="i5_lamp"></div>
+                  <p class="io_txt">I5</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="i6_lamp"></div>
+                  <p class="io_txt">I6</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="i7_lamp"></div>
+                  <p class="io_txt">I7</p>
+                </div>
+              </div>
+              <div class="ioa_contain">
+                <div class="io_contain">
+                  <div class="io_lamp" id="o0_lamp"></div>
+                  <p class="io_txt">O0</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="o1_lamp"></div>
+                  <p class="io_txt">O1</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="o2_lamp"></div>
+                  <p class="io_txt">O2</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="o3_lamp"></div>
+                  <p class="io_txt">O3</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="o4_lamp"></div>
+                  <p class="io_txt">O4</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="o5_lamp"></div>
+                  <p class="io_txt">O5</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="o6_lamp"></div>
+                  <p class="io_txt">O6</p>
+                </div>
+                <div class="io_contain">
+                  <div class="io_lamp" id="o7_lamp"></div>
+                  <p class="io_txt">O7</p>
+                </div>
+              </div>
+              <div class="ioa_contain">
+                <h3 class="lamp_name">I/O Status Lamp</h2>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <!--=============== MEMORY M ===============-->
+      <section class="container section section__height" id="memory-m">
+          <h2 class="section__title">Memory M</h2>
+          <div class="memory-container">
+            <table class="content-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th>Update time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td id='m0_n' contenteditable onkeypress="editData(event)">---</td>
+                  <td id='m0_v'>0</td>
+                  <td id='m0_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >2</td>
+                  <td id='m1_n'>---</td>
+                  <td id='m1_v'>0</td>
+                  <td id='m1_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td id='m2_n'>---</td>
+                  <td id='m2_v'>0</td>
+                  <td id='m2_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >4</td>
+                  <td id='m3_n'>---</td>
+                  <td id='m3_v'>0</td>
+                  <td id='m3_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td id='m4_n'>---</td>
+                  <td id='m4_v'>0</td>
+                  <td id='m4_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >6</td>
+                  <td id='m5_n'>---</td>
+                  <td id='m5_v'>0</td>
+                  <td id='m5_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td id='m6_n'>---</td>
+                  <td id='m6_v'>0</td>
+                  <td id='m6_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >8</td>
+                  <td id='m7_n'>---</td>
+                  <td id='m7_v'>0</td>
+                  <td id='m7_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td id='m8_n'>---</td>
+                  <td id='m8_v'>0</td>
+                  <td id='m8_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >10</td>
+                  <td id='m9_n'>---</td>
+                  <td id='m9_v'>0</td>
+                  <td id='m9_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td id='m10_n'>---</td>
+                  <td id='m10_v'>0</td>
+                  <td id='m10_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >12</td>
+                  <td id='m11_n'>---</td>
+                  <td id='m11_v'>0</td>
+                  <td id='m11_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td id='m12_n'>---</td>
+                  <td id='m12_v'>0</td>
+                  <td id='m12_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >14</td>
+                  <td id='m13_n'>---</td>
+                  <td id='m13_v'>0</td>
+                  <td id='m13_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td id='m14_n'>---</td>
+                  <td id='m14_v'>0</td>
+                  <td id='m14_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >16</td>
+                  <td id='m15_n'>---</td>
+                  <td id='m15_v'>0</td>
+                  <td id='m15_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>17</td>
+                  <td id='m16_n'>---</td>
+                  <td id='m16_v'>0</td>
+                  <td id='m16_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >18</td>
+                  <td id='m17_n'>---</td>
+                  <td id='m17_v'>0</td>
+                  <td id='m17_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>19</td>
+                  <td id='m18_n'>---</td>
+                  <td id='m18_v'>0</td>
+                  <td id='m18_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >20</td>
+                  <td id='m19_n'>---</td>
+                  <td id='m19_v'>0</td>
+                  <td id='m19_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>21</td>
+                  <td id='m20_n'>---</td>
+                  <td id='m20_v'>0</td>
+                  <td id='m20_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >22</td>
+                  <td id='m21_n'>---</td>
+                  <td id='m21_v'>0</td>
+                  <td id='m21_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>23</td>
+                  <td id='m22_n'>---</td>
+                  <td id='m22_v'>0</td>
+                  <td id='m22_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >24</td>
+                  <td id='m23_n'>---</td>
+                  <td id='m23_v'>0</td>
+                  <td id='m23_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>25</td>
+                  <td id='m24_n'>---</td>
+                  <td id='m24_v'>0</td>
+                  <td id='m24_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >26</td>
+                  <td id='m25_n'>---</td>
+                  <td id='m25_v'>0</td>
+                  <td id='m25_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>27</td>
+                  <td id='m26_n'>---</td>
+                  <td id='m26_v'>0</td>
+                  <td id='m26_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >28</td>
+                  <td id='m27_n'>---</td>
+                  <td id='m27_v'>0</td>
+                  <td id='m27_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>29</td>
+                  <td id='m28_n'>---</td>
+                  <td id='m28_v'>0</td>
+                  <td id='m28_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >30</td>
+                  <td id='m29_n'>---</td>
+                  <td id='m29_v'>0</td>
+                  <td id='m29_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>31</td>
+                  <td id='m30_n'>---</td>
+                  <td id='m30_v'>0</td>
+                  <td id='m30_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >32</td>
+                  <td id='m31_n'>---</td>
+                  <td id='m31_v'>0</td>
+                  <td id='m31_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>33</td>
+                  <td id='m32_n'>---</td>
+                  <td id='m32_v'>0</td>
+                  <td id='m32_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >34</td>
+                  <td id='m33_n'>---</td>
+                  <td id='m33_v'>0</td>
+                  <td id='m33_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>35</td>
+                  <td id='m34_n'>---</td>
+                  <td id='m34_v'>0</td>
+                  <td id='m34_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >36</td>
+                  <td id='m35_n'>---</td>
+                  <td id='m35_v'>0</td>
+                  <td id='m35_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>37</td>
+                  <td id='m36_n'>---</td>
+                  <td id='m36_v'>0</td>
+                  <td id='m36_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >38</td>
+                  <td id='m37_n'>---</td>
+                  <td id='m37_v'>0</td>
+                  <td id='m37_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>39</td>
+                  <td id='m38_n'>---</td>
+                  <td id='m38_v'>0</td>
+                  <td id='m38_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >40</td>
+                  <td id='m39_n'>---</td>
+                  <td id='m39_v'>0</td>
+                  <td id='m39_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>41</td>
+                  <td id='m40_n'>---</td>
+                  <td id='m40_v'>0</td>
+                  <td id='m40_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >42</td>
+                  <td id='m41_n'>---</td>
+                  <td id='m41_v'>0</td>
+                  <td id='m41_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>43</td>
+                  <td id='m42_n'>---</td>
+                  <td id='m42_v'>0</td>
+                  <td id='m42_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >44</td>
+                  <td id='m43_n'>---</td>
+                  <td id='m43_v'>0</td>
+                  <td id='m43_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>45</td>
+                  <td id='m44_n'>---</td>
+                  <td id='m44_v'>0</td>
+                  <td id='m44_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >46</td>
+                  <td id='m45_n'>---</td>
+                  <td id='m45_v'>0</td>
+                  <td id='m45_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>47</td>
+                  <td id='m46_n'>---</td>
+                  <td id='m46_v'>0</td>
+                  <td id='m46_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >48</td>
+                  <td id='m47_n'>---</td>
+                  <td id='m47_v'>0</td>
+                  <td id='m47_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>49</td>
+                  <td id='m48_n'>---</td>
+                  <td id='m48_v'>0</td>
+                  <td id='m48_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >50</td>
+                  <td id='m49_n'>---</td>
+                  <td id='m49_v'>0</td>
+                  <td id='m49_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>51</td>
+                  <td id='m50_n'>---</td>
+                  <td id='m50_v'>0</td>
+                  <td id='m50_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >52</td>
+                  <td id='m51_n'>---</td>
+                  <td id='m51_v'>0</td>
+                  <td id='m51_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>53</td>
+                  <td id='m52_n'>---</td>
+                  <td id='m52_v'>0</td>
+                  <td id='m52_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >54</td>
+                  <td id='m53_n'>---</td>
+                  <td id='m53_v'>0</td>
+                  <td id='m53_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>55</td>
+                  <td id='m54_n'>---</td>
+                  <td id='m54_v'>0</td>
+                  <td id='m54_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >56</td>
+                  <td id='m55_n'>---</td>
+                  <td id='m55_v'>0</td>
+                  <td id='m55_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>57</td>
+                  <td id='m56_n'>---</td>
+                  <td id='m56_v'>0</td>
+                  <td id='m56_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >58</td>
+                  <td id='m57_n'>---</td>
+                  <td id='m57_v'>0</td>
+                  <td id='m57_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>59</td>
+                  <td id='m58_n'>---</td>
+                  <td id='m58_v'>0</td>
+                  <td id='m58_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >60</td>
+                  <td id='m59_n'>---</td>
+                  <td id='m59_v'>0</td>
+                  <td id='m59_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>61</td>
+                  <td id='m60_n'>---</td>
+                  <td id='m60_v'>0</td>
+                  <td id='m60_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >62</td>
+                  <td id='m61_n'>---</td>
+                  <td id='m61_v'>0</td>
+                  <td id='m61_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>63</td>
+                  <td id='m62_n'>---</td>
+                  <td id='m62_v'>0</td>
+                  <td id='m62_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >64</td>
+                  <td id='m63_n'>---</td>
+                  <td id='m63_v'>0</td>
+                  <td id='m63_u'>--:--:--</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+      </section>
+
+      <!--=============== MEMORY D ===============-->
+      <section class="container section section__height" id="memory-d">
+          <h2 class="section__title">Memory D</h2>
+          <div class="memory-container">
+            <table class="content-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th>Update time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td id='d0_n'>---</td>
+                  <td id='d0_v'>0</td>
+                  <td id='d0_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >2</td>
+                  <td id='d1_n'>---</td>
+                  <td id='d1_v'>0</td>
+                  <td id='d1_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td id='d2_n'>---</td>
+                  <td id='d2_v'>0</td>
+                  <td id='d2_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >4</td>
+                  <td id='d3_n'>---</td>
+                  <td id='d3_v'>0</td>
+                  <td id='d3_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td id='d4_n'>---</td>
+                  <td id='d4_v'>0</td>
+                  <td id='d4_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >6</td>
+                  <td id='d5_n'>---</td>
+                  <td id='d5_v'>0</td>
+                  <td id='d5_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td id='d6_n'>---</td>
+                  <td id='d6_v'>0</td>
+                  <td id='d6_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >8</td>
+                  <td id='d7_n'>---</td>
+                  <td id='d7_v'>0</td>
+                  <td id='d7_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td id='d8_n'>---</td>
+                  <td id='d8_v'>0</td>
+                  <td id='d8_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >10</td>
+                  <td id='d9_n'>---</td>
+                  <td id='d9_v'>0</td>
+                  <td id='d9_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td id='d10_n'>---</td>
+                  <td id='d10_v'>0</td>
+                  <td id='d10_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >12</td>
+                  <td id='d11_n'>---</td>
+                  <td id='d11_v'>0</td>
+                  <td id='d11_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td id='d12_n'>---</td>
+                  <td id='d12_v'>0</td>
+                  <td id='d12_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >14</td>
+                  <td id='d13_n'>---</td>
+                  <td id='d13_v'>0</td>
+                  <td id='d13_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td id='d14_n'>---</td>
+                  <td id='d14_v'>0</td>
+                  <td id='d14_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >16</td>
+                  <td id='d15_n'>---</td>
+                  <td id='d15_v'>0</td>
+                  <td id='d15_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>17</td>
+                  <td id='d16_n'>---</td>
+                  <td id='d16_v'>0</td>
+                  <td id='d16_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >18</td>
+                  <td id='d17_n'>---</td>
+                  <td id='d17_v'>0</td>
+                  <td id='d17_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>19</td>
+                  <td id='d18_n'>---</td>
+                  <td id='d18_v'>0</td>
+                  <td id='d18_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >20</td>
+                  <td id='d19_n'>---</td>
+                  <td id='d19_v'>0</td>
+                  <td id='d19_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>21</td>
+                  <td id='d20_n'>---</td>
+                  <td id='d20_v'>0</td>
+                  <td id='d20_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >22</td>
+                  <td id='d21_n'>---</td>
+                  <td id='d21_v'>0</td>
+                  <td id='d21_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>23</td>
+                  <td id='d22_n'>---</td>
+                  <td id='d22_v'>0</td>
+                  <td id='d22_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >24</td>
+                  <td id='d23_n'>---</td>
+                  <td id='d23_v'>0</td>
+                  <td id='d23_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>25</td>
+                  <td id='d24_n'>---</td>
+                  <td id='d24_v'>0</td>
+                  <td id='d24_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >26</td>
+                  <td id='d25_n'>---</td>
+                  <td id='d25_v'>0</td>
+                  <td id='d25_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>27</td>
+                  <td id='d26_n'>---</td>
+                  <td id='d26_v'>0</td>
+                  <td id='d26_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >28</td>
+                  <td id='d27_n'>---</td>
+                  <td id='d27_v'>0</td>
+                  <td id='d27_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>29</td>
+                  <td id='d28_n'>---</td>
+                  <td id='d28_v'>0</td>
+                  <td id='d28_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >30</td>
+                  <td id='d29_n'>---</td>
+                  <td id='d29_v'>0</td>
+                  <td id='d29_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>31</td>
+                  <td id='d30_n'>---</td>
+                  <td id='d30_v'>0</td>
+                  <td id='d30_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >32</td>
+                  <td id='d31_n'>---</td>
+                  <td id='d31_v'>0</td>
+                  <td id='d31_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>33</td>
+                  <td id='d32_n'>---</td>
+                  <td id='d32_v'>0</td>
+                  <td id='d32_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >34</td>
+                  <td id='d33_n'>---</td>
+                  <td id='d33_v'>0</td>
+                  <td id='d33_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>35</td>
+                  <td id='d34_n'>---</td>
+                  <td id='d34_v'>0</td>
+                  <td id='d34_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >36</td>
+                  <td id='d35_n'>---</td>
+                  <td id='d35_v'>0</td>
+                  <td id='d35_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>37</td>
+                  <td id='d36_n'>---</td>
+                  <td id='d36_v'>0</td>
+                  <td id='d36_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >38</td>
+                  <td id='d37_n'>---</td>
+                  <td id='d37_v'>0</td>
+                  <td id='d37_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>39</td>
+                  <td id='d38_n'>---</td>
+                  <td id='d38_v'>0</td>
+                  <td id='d38_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >40</td>
+                  <td id='d39_n'>---</td>
+                  <td id='d39_v'>0</td>
+                  <td id='d39_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>41</td>
+                  <td id='d40_n'>---</td>
+                  <td id='d40_v'>0</td>
+                  <td id='d40_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >42</td>
+                  <td id='d41_n'>---</td>
+                  <td id='d41_v'>0</td>
+                  <td id='d41_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>43</td>
+                  <td id='d42_n'>---</td>
+                  <td id='d42_v'>0</td>
+                  <td id='d42_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >44</td>
+                  <td id='d43_n'>---</td>
+                  <td id='d43_v'>0</td>
+                  <td id='d43_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>45</td>
+                  <td id='d44_n'>---</td>
+                  <td id='d44_v'>0</td>
+                  <td id='d44_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >46</td>
+                  <td id='d45_n'>---</td>
+                  <td id='d45_v'>0</td>
+                  <td id='d45_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>47</td>
+                  <td id='d46_n'>---</td>
+                  <td id='d46_v'>0</td>
+                  <td id='d46_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >48</td>
+                  <td id='d47_n'>---</td>
+                  <td id='d47_v'>0</td>
+                  <td id='d47_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>49</td>
+                  <td id='d48_n'>---</td>
+                  <td id='d48_v'>0</td>
+                  <td id='d48_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >50</td>
+                  <td id='d49_n'>---</td>
+                  <td id='d49_v'>0</td>
+                  <td id='d49_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>51</td>
+                  <td id='d50_n'>---</td>
+                  <td id='d50_v'>0</td>
+                  <td id='d50_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >52</td>
+                  <td id='d51_n'>---</td>
+                  <td id='d51_v'>0</td>
+                  <td id='d51_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>53</td>
+                  <td id='d52_n'>---</td>
+                  <td id='d52_v'>0</td>
+                  <td id='d52_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >54</td>
+                  <td id='d53_n'>---</td>
+                  <td id='d53_v'>0</td>
+                  <td id='d53_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>55</td>
+                  <td id='d54_n'>---</td>
+                  <td id='d54_v'>0</td>
+                  <td id='d54_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >56</td>
+                  <td id='d55_n'>---</td>
+                  <td id='d55_v'>0</td>
+                  <td id='d55_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>57</td>
+                  <td id='d56_n'>---</td>
+                  <td id='d56_v'>0</td>
+                  <td id='d56_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >58</td>
+                  <td id='d57_n'>---</td>
+                  <td id='d57_v'>0</td>
+                  <td id='d57_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>59</td>
+                  <td id='d58_n'>---</td>
+                  <td id='d58_v'>0</td>
+                  <td id='d58_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >60</td>
+                  <td id='d59_n'>---</td>
+                  <td id='d59_v'>0</td>
+                  <td id='d59_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>61</td>
+                  <td id='d60_n'>---</td>
+                  <td id='d60_v'>0</td>
+                  <td id='d60_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >62</td>
+                  <td id='d61_n'>---</td>
+                  <td id='d61_v'>0</td>
+                  <td id='d61_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>63</td>
+                  <td id='d62_n'>---</td>
+                  <td id='d62_v'>0</td>
+                  <td id='d62_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >64</td>
+                  <td id='d63_n'>---</td>
+                  <td id='d63_v'>0</td>
+                  <td id='d63_u'>--:--:--</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+      </section>
+
+      <!--=============== MEMORY F ===============-->
+      <section class="container section section__height" id="memory-f">
+          <h2 class="section__title">Memory F</h2>
+          <div class="memory-container">
+            <table class="content-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th>Update time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td id='f0_n'>---</td>
+                  <td id='f0_v'>0</td>
+                  <td id='f0_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >2</td>
+                  <td id='f1_n'>---</td>
+                  <td id='f1_v'>0</td>
+                  <td id='f1_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td id='f2_n'>---</td>
+                  <td id='f2_v'>0</td>
+                  <td id='f2_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >4</td>
+                  <td id='f3_n'>---</td>
+                  <td id='f3_v'>0</td>
+                  <td id='f3_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td id='f4_n'>---</td>
+                  <td id='f4_v'>0</td>
+                  <td id='f4_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >6</td>
+                  <td id='f5_n'>---</td>
+                  <td id='f5_v'>0</td>
+                  <td id='f5_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td id='f6_n'>---</td>
+                  <td id='f6_v'>0</td>
+                  <td id='f6_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >8</td>
+                  <td id='f7_n'>---</td>
+                  <td id='f7_v'>0</td>
+                  <td id='f7_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td id='f8_n'>---</td>
+                  <td id='f8_v'>0</td>
+                  <td id='f8_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >10</td>
+                  <td id='f9_n'>---</td>
+                  <td id='f9_v'>0</td>
+                  <td id='f9_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td id='f10_n'>---</td>
+                  <td id='f10_v'>0</td>
+                  <td id='f10_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >12</td>
+                  <td id='f11_n'>---</td>
+                  <td id='f11_v'>0</td>
+                  <td id='f11_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td id='f12_n'>---</td>
+                  <td id='f12_v'>0</td>
+                  <td id='f12_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >14</td>
+                  <td id='f13_n'>---</td>
+                  <td id='f13_v'>0</td>
+                  <td id='f13_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td id='f14_n'>---</td>
+                  <td id='f14_v'>0</td>
+                  <td id='f14_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >16</td>
+                  <td id='f15_n'>---</td>
+                  <td id='f15_v'>0</td>
+                  <td id='f15_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>17</td>
+                  <td id='f16_n'>---</td>
+                  <td id='f16_v'>0</td>
+                  <td id='f16_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >18</td>
+                  <td id='f17_n'>---</td>
+                  <td id='f17_v'>0</td>
+                  <td id='f17_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>19</td>
+                  <td id='f18_n'>---</td>
+                  <td id='f18_v'>0</td>
+                  <td id='f18_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >20</td>
+                  <td id='f19_n'>---</td>
+                  <td id='f19_v'>0</td>
+                  <td id='f19_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>21</td>
+                  <td id='f20_n'>---</td>
+                  <td id='f20_v'>0</td>
+                  <td id='f20_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >22</td>
+                  <td id='f21_n'>---</td>
+                  <td id='f21_v'>0</td>
+                  <td id='f21_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>23</td>
+                  <td id='f22_n'>---</td>
+                  <td id='f22_v'>0</td>
+                  <td id='f22_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >24</td>
+                  <td id='f23_n'>---</td>
+                  <td id='f23_v'>0</td>
+                  <td id='f23_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>25</td>
+                  <td id='f24_n'>---</td>
+                  <td id='f24_v'>0</td>
+                  <td id='f24_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >26</td>
+                  <td id='f25_n'>---</td>
+                  <td id='f25_v'>0</td>
+                  <td id='f25_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>27</td>
+                  <td id='f26_n'>---</td>
+                  <td id='f26_v'>0</td>
+                  <td id='f26_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >28</td>
+                  <td id='f27_n'>---</td>
+                  <td id='f27_v'>0</td>
+                  <td id='f27_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>29</td>
+                  <td id='f28_n'>---</td>
+                  <td id='f28_v'>0</td>
+                  <td id='f28_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >30</td>
+                  <td id='f29_n'>---</td>
+                  <td id='f29_v'>0</td>
+                  <td id='f29_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>31</td>
+                  <td id='f30_n'>---</td>
+                  <td id='f30_v'>0</td>
+                  <td id='f30_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >32</td>
+                  <td id='f31_n'>---</td>
+                  <td id='f31_v'>0</td>
+                  <td id='f31_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>33</td>
+                  <td id='f32_n'>---</td>
+                  <td id='f32_v'>0</td>
+                  <td id='f32_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >34</td>
+                  <td id='f33_n'>---</td>
+                  <td id='f33_v'>0</td>
+                  <td id='f33_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>35</td>
+                  <td id='f34_n'>---</td>
+                  <td id='f34_v'>0</td>
+                  <td id='f34_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >36</td>
+                  <td id='f35_n'>---</td>
+                  <td id='f35_v'>0</td>
+                  <td id='f35_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>37</td>
+                  <td id='f36_n'>---</td>
+                  <td id='f36_v'>0</td>
+                  <td id='f36_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >38</td>
+                  <td id='f37_n'>---</td>
+                  <td id='f37_v'>0</td>
+                  <td id='f37_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>39</td>
+                  <td id='f38_n'>---</td>
+                  <td id='f38_v'>0</td>
+                  <td id='f38_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >40</td>
+                  <td id='f39_n'>---</td>
+                  <td id='f39_v'>0</td>
+                  <td id='f39_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>41</td>
+                  <td id='f40_n'>---</td>
+                  <td id='f40_v'>0</td>
+                  <td id='f40_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >42</td>
+                  <td id='f41_n'>---</td>
+                  <td id='f41_v'>0</td>
+                  <td id='f41_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>43</td>
+                  <td id='f42_n'>---</td>
+                  <td id='f42_v'>0</td>
+                  <td id='f42_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >44</td>
+                  <td id='f43_n'>---</td>
+                  <td id='f43_v'>0</td>
+                  <td id='f43_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>45</td>
+                  <td id='f44_n'>---</td>
+                  <td id='f44_v'>0</td>
+                  <td id='f44_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >46</td>
+                  <td id='f45_n'>---</td>
+                  <td id='f45_v'>0</td>
+                  <td id='f45_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>47</td>
+                  <td id='f46_n'>---</td>
+                  <td id='f46_v'>0</td>
+                  <td id='f46_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >48</td>
+                  <td id='f47_n'>---</td>
+                  <td id='f47_v'>0</td>
+                  <td id='f47_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>49</td>
+                  <td id='f48_n'>---</td>
+                  <td id='f48_v'>0</td>
+                  <td id='f48_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >50</td>
+                  <td id='f49_n'>---</td>
+                  <td id='f49_v'>0</td>
+                  <td id='f49_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>51</td>
+                  <td id='f50_n'>---</td>
+                  <td id='f50_v'>0</td>
+                  <td id='f50_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >52</td>
+                  <td id='f51_n'>---</td>
+                  <td id='f51_v'>0</td>
+                  <td id='f51_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>53</td>
+                  <td id='f52_n'>---</td>
+                  <td id='f52_v'>0</td>
+                  <td id='f52_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >54</td>
+                  <td id='f53_n'>---</td>
+                  <td id='f53_v'>0</td>
+                  <td id='f53_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>55</td>
+                  <td id='f54_n'>---</td>
+                  <td id='f54_v'>0</td>
+                  <td id='f54_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >56</td>
+                  <td id='f55_n'>---</td>
+                  <td id='f55_v'>0</td>
+                  <td id='f55_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>57</td>
+                  <td id='f56_n'>---</td>
+                  <td id='f56_v'>0</td>
+                  <td id='f56_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >58</td>
+                  <td id='f57_n'>---</td>
+                  <td id='f57_v'>0</td>
+                  <td id='f57_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>59</td>
+                  <td id='f58_n'>---</td>
+                  <td id='f58_v'>0</td>
+                  <td id='f58_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >60</td>
+                  <td id='f59_n'>---</td>
+                  <td id='f59_v'>0</td>
+                  <td id='f59_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>61</td>
+                  <td id='f60_n'>---</td>
+                  <td id='f60_v'>0</td>
+                  <td id='f60_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >62</td>
+                  <td id='f61_n'>---</td>
+                  <td id='f61_v'>0</td>
+                  <td id='f61_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td>63</td>
+                  <td id='f62_n'>---</td>
+                  <td id='f62_v'>0</td>
+                  <td id='f62_u'>--:--:--</td>
+                </tr>
+                <tr>
+                  <td >64</td>
+                  <td id='f63_n'>---</td>
+                  <td id='f63_v'>0</td>
+                  <td id='f63_u'>--:--:--</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+      </section>
+
+      <!--=============== DIAGNOSTIC ===============-->
+      <section class="container section section__height" id="diagnostic">
+          <h2 class="section__title">Diagnostic Data</h2> <!--
+          <button type="button" onclick="insertDiagnostic()">Add row</button>
+          <button type="button" onclick="clearDiagnostic()">Clear row</button> -->
+          <div class="memory-container">
+            <table id="diagnostable" class="content-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Descriptions</th>
+                  <th>Value</th>
+                  <th>Update time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr> <!--
+                  <td>-</td>
+                  <td id='dg0_n'>---</td>
+                  <td id='dg0_v'>0</td>
+                  <td id='dg0_u'>--:--:--</td>
+                  -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </section>
+  </main>
+    <script src="script.js"></script>
+  </body>
+</html> 

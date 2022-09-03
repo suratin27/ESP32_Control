@@ -5,6 +5,7 @@
 #include "SPIFFS.h"
 #include "ESP32ControlIO.h"
 
+
 String getValueReadings();
 void initSPIFFS();
 void setupWebserver();
@@ -36,4 +37,4 @@ void addDiagnostic(String _diag);
 //- Memory definitions
 void defMemory(bool setDiag = false);
 //- Init ESP32 Monitor
-void initESP32Monitor(uint8_t _boardVersion = 0);
+void initESP32Monitor(uint8_t _version);

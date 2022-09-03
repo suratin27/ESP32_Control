@@ -1,3 +1,6 @@
+# ESP32_Control v 1.2.6
+- Tutor012 added
+- web monitor bug fixed
 # ESP32_Control v 1.2.5
 ESP32 Control library for All TF ESP32 Control module and Mini PLC RLX-32U
 Last updated 22/5/2022

@@ -14,7 +14,6 @@ Ix10RS	KEYWORD1
 ###########################################
 # Methods and Functions (KEYWORD2)
 ###########################################
-
 initIO				  KEYWORD2
 printInput			KEYWORD2
 toggleLed			  KEYWORD2

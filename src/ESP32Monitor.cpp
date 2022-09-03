@@ -15,7 +15,7 @@ float fData[64];
 String diagData[64];
 
 bool isSPIFFS;
-uint8_t boardVersion = 0;
+uint8_t boardVersion;
 
 String cmd;
 char car;
@@ -39,7 +39,7 @@ String getValueReadings(){
     readings[fName[i]] = fData[i];
   }
   for(uint8_t i = 0 ;i < 8 ; i++){    //- Input
-    readings["I"+String(i)] = !readInput(i);
+    readings["I"+String(i)] = readInput(i);
   }
   for(uint8_t i = 0 ;i < 8 ; i++){    //- Output
     readings["O"+String(i)] = getOutput(i);
@@ -69,16 +69,20 @@ void initSPIFFS() {
 }
 
 //- Set up web server 
-void setupWebserver(){
-  if (boardVersion == 0){
-    //initIO();     //- Init IO
-    // Web Server Root URL
+void setupWebserver(uint8_t _boardversion){
+  if (_boardversion == 0){
     server.on("/monitor", HTTP_GET, [](AsyncWebServerRequest *request){
       request->send(SPIFFS, "/monitor10rs.html", "text/html");
     });
-  }else if(boardVersion == 1){
-    //initIO(1);     //- Init IO
-    // Web Server Root URL
+  }else if(_boardversion == 1){
+    server.on("/monitor", HTTP_GET, [](AsyncWebServerRequest *request){
+      request->send(SPIFFS, "/monitor10rx.html", "text/html");
+    });
+  }else if(_boardversion == 2){
+    server.on("/monitor", HTTP_GET, [](AsyncWebServerRequest *request){
+      request->send(SPIFFS, "/monitor32u.html", "text/html");
+    });
+  }else if(_boardversion == 3){
     server.on("/monitor", HTTP_GET, [](AsyncWebServerRequest *request){
       request->send(SPIFFS, "/monitor10.html", "text/html");
     });
@@ -239,8 +243,7 @@ void defMemory(bool setDiag){
 }
 
 //- Init Web monitor
-void initESP32Monitor(uint8_t _boardVersion){
-  boardVersion = _boardVersion;
+void initESP32Monitor(uint8_t _version){
   Serial.println("---------------------------------------------------------");
   Serial.println("                   Begin ESP32 Monitor");
   Serial.println("---------------------------------------------------------");
@@ -254,17 +257,25 @@ void initESP32Monitor(uint8_t _boardVersion){
   Serial.println();
   delay(500);
   Serial.println("--- > Begin init Device IO");
-  if(boardVersion == 0){
+  if(_version == 0){
     initIO();
     Serial.println("--- > Use ESP32 Control v1.0RS");
-  }else if(boardVersion == 1){
+  }else if(_version == 1){
     initIO(1);
-    Serial.println("--- > Use ESP32 Control v1.0");
+    Serial.println("--- > Use ESP32 Control v1.0RX");
+  }else if(_version == 2){
+    initIO(2);
+    Serial.println("--- > Use MINIPLC RLX 32U");
   }
+  else if(_version == 3){
+    initIO(3);
+    Serial.println("--- > Use Other lagacy board");
+  }
+
   Serial.println();
   delay(500);
   Serial.println("--- > Begin init Web monitor server");
-  setupWebserver();
+  setupWebserver(_version);
   Serial.println("--- > OK");
   Serial.println();
   delay(500);
