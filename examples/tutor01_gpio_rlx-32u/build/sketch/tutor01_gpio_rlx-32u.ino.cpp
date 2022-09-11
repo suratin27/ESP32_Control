@@ -26,11 +26,6 @@ uint8_t OutPos = 0;
 const uint8_t RX2 = 22;       //- ขา RX ของ rs485
 const uint8_t TX2 = 23;       //- ขา TX ของ rs485
 
-#line 26 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_rlx-32u\\tutor01_gpio_rlx-32u.ino"
-void setup();
-#line 36 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_rlx-32u\\tutor01_gpio_rlx-32u.ino"
-void loop();
-#line 26 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_rlx-32u\\tutor01_gpio_rlx-32u.ino"
 void setup(){
   Serial.begin(9600);         //- Serial0 คือ USB port
   Serial2.begin(115200,SERIAL_8N1,RX2,TX2); 

@@ -10,6 +10,8 @@ Qx10	KEYWORD1
 Ix10	KEYWORD1
 Qx10RS	KEYWORD1
 Ix10RS	KEYWORD1
+BORAD_VERSION
+BORAD_TXT
 
 ###########################################
 # Methods and Functions (KEYWORD2)

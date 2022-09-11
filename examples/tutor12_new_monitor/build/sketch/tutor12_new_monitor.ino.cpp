@@ -17,16 +17,9 @@
 ---------------------------------------------------------------------*/
 long lastval =0;
 uint8_t oVal = 0;
-const char* ssid = "Tofahome";
-const char* password = "0804863439";
+const char* ssid = "JURAPORN_2.4G";
+const char* password = "044801060";
 
-#line 20 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor12_new_monitor\\tutor12_new_monitor.ino"
-void initWiFi();
-#line 36 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor12_new_monitor\\tutor12_new_monitor.ino"
-void setup();
-#line 53 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor12_new_monitor\\tutor12_new_monitor.ino"
-void loop();
-#line 20 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor12_new_monitor\\tutor12_new_monitor.ino"
 void initWiFi(){
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);

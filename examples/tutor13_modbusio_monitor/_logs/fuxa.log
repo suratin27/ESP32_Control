@@ -1,0 +1,38 @@
+2022-09-03T16:30:53.410Z [info] FUXA V.1.1.6
+2022-09-03T16:30:53.504Z [info] daqstorage: init successful!
+2022-09-03T16:30:53.920Z [info] api: init successful!
+2022-09-03T16:30:53.924Z [info] plugin-installed node-opcua 2.72.2
+2022-09-03T16:30:53.924Z [info] plugin-installed node-bacnet 0.2.4
+2022-09-03T16:30:53.924Z [info] plugin-installed node-snap7 1.0.6
+2022-09-03T16:30:53.925Z [info] usrstorage.connected E:\Arduino_Lib\libraries\ESP32_Control\examples\tutor13_modbusio_monitor\_appdata\users.fuxap.db database
+2022-09-03T16:30:53.925Z [info] prjstorage.connected-to E:\Arduino_Lib\libraries\ESP32_Control\examples\tutor13_modbusio_monitor\_appdata\project.fuxap.db database
+2022-09-03T16:30:53.929Z [info] users.usrstorage-init successful!
+2022-09-03T16:30:54.011Z [info] project.prjstorage-init-successful!
+2022-09-03T16:30:54.014Z [info] users.usrstorage-set-default successful!
+2022-09-03T16:30:54.014Z [info] runtime init users successful!
+2022-09-03T16:30:54.015Z [info] project.prjstorage-set-default-successful!
+2022-09-03T16:30:54.015Z [info] runtime init project successful!
+2022-09-03T16:30:54.056Z [info] plugin-installed modbus-serial 8.0.5
+2022-09-03T16:30:54.056Z [info] runtime init plugins successful!
+2022-09-03T16:30:54.057Z [info] FUXA init in  678ms.
+2022-09-03T16:30:54.061Z [info] daqstorage reset!
+2022-09-03T16:30:54.062Z [info] alarms check start
+2022-09-03T16:30:54.062Z [info] notificator check start
+2022-09-03T16:30:54.062Z [info] scripts.start-checkstatus
+2022-09-03T16:30:54.063Z [info] FUXA started!
+2022-09-03T16:30:54.066Z [info] WebServer is running http://127.0.0.1:1881/
+2022-09-03T16:30:55.069Z [info] alarmsstorage.connected-to E:\Arduino_Lib\libraries\ESP32_Control\examples\tutor13_modbusio_monitor\_appdata\alarms.fuxap.db database.
+2022-09-03T16:30:55.073Z [info] alarms.alarmstorage-init-successful!
+2022-09-03T16:31:35.868Z [info] socket.io client connected
+2022-09-03T16:32:00.473Z [info] 'FUXA Server' data loaded (0)
+2022-09-03T16:32:00.474Z [info] 'FUXA Server' created
+2022-09-03T16:32:00.476Z [info] 'FUXA Server' start
+2022-09-03T16:32:00.477Z [info] daqstorage.bind-daq-data '_db\daq-data_0_20220903233200.db' database
+2022-09-03T16:32:00.477Z [info] daqstorage.bind-daq-map '_db\daq-map_0.db' database
+2022-09-03T16:32:00.480Z [info] daqstorage.connected-to-data '_db\daq-data_0_20220903233200.db' database
+2022-09-03T16:32:00.480Z [info] daqstorage.connected-to-map '_db\daq-map_0.db' database
+2022-09-03T16:32:00.480Z [info] daqstorage.load-map successful! '0'
+2022-09-03T16:33:52.925Z [info] 'FUXA Server' stop
+2022-09-03T16:33:52.926Z [info] 'FUXA Server' exist
+2022-09-03T16:33:52.926Z [info] 'FUXA Server' data loaded (0)
+2022-09-03T16:33:52.926Z [info] 'FUXA Server' start

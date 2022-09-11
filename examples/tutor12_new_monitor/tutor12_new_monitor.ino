@@ -14,8 +14,8 @@
 ---------------------------------------------------------------------*/
 long lastval =0;
 uint8_t oVal = 0;
-const char* ssid = "Tofahome";
-const char* password = "0804863439";
+const char* ssid = "JURAPORN_2.4G";
+const char* password = "044801060";
 
 void initWiFi(){
   WiFi.mode(WIFI_STA);

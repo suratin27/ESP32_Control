@@ -277,7 +277,7 @@ void ModbusTCPMaster::readCoils(WiFiClient &client, uint8_t slave, uint16_t addr
                 Serial.print(" , ");
               #endif
             }
-            Serial.println();
+            //Serial.println();
           }else{
             uint8_t tByte = 0;         //- Data store registor
             if((quantity%8)==0){
@@ -294,17 +294,17 @@ void ModbusTCPMaster::readCoils(WiFiClient &client, uint8_t slave, uint16_t addr
             for(uint8_t x = 0;x<tWord;x++){
               *(((uint16_t*)(iRes))+x) = response.getRegister(x);
             }
-            Serial.println();
+            //Serial.println();
             for(uint8_t o=0;o<tByte;o++){
               byteTemp  = iRes[o*2];
               iRes[o*2]   = iRes[(o*2)+1];
               iRes[(o*2)+1] = byteTemp;
             }
             for(uint8_t op=0;op<tByte;op++){
-              Serial.print("iRes ");
-              Serial.print(op); 
-              Serial.print(" : ");
-              Serial.println(iRes[op]); 
+              //Serial.print("iRes ");
+              //Serial.print(op); 
+              //Serial.print(" : ");
+              //Serial.println(iRes[op]); 
             }
             uint8_t bitPos = 0;
             uint8_t iResPos = 0;
@@ -334,7 +334,7 @@ void ModbusTCPMaster::readCoils(WiFiClient &client, uint8_t slave, uint16_t addr
                 bitPos = 0;
               }
             }
-            Serial.println();   
+            //Serial.println();   
           }
         }
       }
@@ -342,6 +342,7 @@ void ModbusTCPMaster::readCoils(WiFiClient &client, uint8_t slave, uint16_t addr
     waitCount += 1;
   }
   waitCount = 0;
+  //delay(5);
 }
 void ModbusTCPMaster::readDiscreteInputs(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity, bool* storage){
   if(_readDiscreteInputs(client,slave, addr, quantity)){
@@ -353,6 +354,95 @@ void ModbusTCPMaster::readDiscreteInputs(WiFiClient &client, uint8_t slave, uint
       //Serial.println("Can not read data");
     #endif
   }
+  // Check available responses often
+  if (isWaitingResponse()) {
+    ModbusResponse response = available();
+    if (response) {
+      //if (response.hasError()) {
+      if(response.hasError()){
+        #ifdef ESP32_CONTROL_DEBUG
+          Serial.print("Error : ");
+          Serial.println(ErrorName[response.getErrorCode()]);
+        #endif
+        //return false;
+      } else {
+        #ifdef ESP32_CONTROL_DEBUG
+          Serial.print("DiscreteInput registers values: ");
+        #endif
+        int i=0;
+        if(quantity <= 8){
+          uint8_t iRes[2];
+          *(uint16_t*)(iRes) = response.getRegister(0);
+          for(i=0;i<quantity;i++){
+            *(storage + i) = iRes[1]&hexmask[i];
+            #ifdef ESP32_CONTROL_DEBUG
+              Serial.print(*(storage + i));
+              Serial.print(" , ");
+            #endif
+          }
+          //Serial.println();
+        }else{
+          uint8_t tByte = 0;         //- Data store registor
+          if((quantity%8)==0){
+            tByte = quantity / 8;
+          }else{
+            tByte = (quantity / 8) + 1;
+          }
+          if((tByte%2)!=0){
+            tByte += 1;        //- if tByte = 5 must +1
+          }
+          uint8_t iRes[tByte];
+          uint8_t tWord = tByte/2;
+          uint8_t byteTemp = 0;
+          for(uint8_t x = 0;x<tWord;x++){
+            *(((uint16_t*)(iRes))+x) = response.getRegister(x);
+          }
+          //Serial.println();
+          for(uint8_t o=0;o<tByte;o++){
+            byteTemp  = iRes[o*2];
+            iRes[o*2]   = iRes[(o*2)+1];
+            iRes[(o*2)+1] = byteTemp;
+          }
+          for(uint8_t op=0;op<tByte;op++){
+            //Serial.print("iRes ");
+            //Serial.print(op); 
+            //Serial.print(" : ");
+            //Serial.println(iRes[op]); 
+          }
+          uint8_t bitPos = 0;
+          uint8_t iResPos = 0;
+          for(uint8_t j=0;j<quantity;j++){
+            if((iRes[iResPos]&hexmask[bitPos])!=0){
+              *(storage + j) = true;
+            }else{
+              *(storage + j) = false;
+            }
+            
+            #ifdef ESP32_CONTROL_DEBUG
+              Serial.print("J loop: ");
+              Serial.println(j);
+              Serial.print("bitPos Count: ");
+              Serial.println(bitPos);
+              Serial.print("Hexmask: ");
+              Serial.println(hexmask[bitPos]);
+              Serial.print("bitPos Value: ");
+              Serial.println(*(storage + j));
+              Serial.print(*(storage + j));
+              Serial.print(" , ");
+            #endif
+            if(bitPos <= 6){
+              bitPos += 1;
+            }else{
+              iResPos += 1;
+              bitPos = 0;
+            }
+          }
+          //Serial.println();   
+        }
+      }
+    }
+  }
+  /*
   if((millis() - lastMills > 20)&&(waitCount < 3)){
     lastMills = millis();
     // Check available responses often
@@ -381,7 +471,7 @@ void ModbusTCPMaster::readDiscreteInputs(WiFiClient &client, uint8_t slave, uint
                 Serial.print(" , ");
               #endif
             }
-            Serial.println();
+            //Serial.println();
           }else{
             uint8_t tByte = 0;         //- Data store registor
             if((quantity%8)==0){
@@ -398,17 +488,17 @@ void ModbusTCPMaster::readDiscreteInputs(WiFiClient &client, uint8_t slave, uint
             for(uint8_t x = 0;x<tWord;x++){
               *(((uint16_t*)(iRes))+x) = response.getRegister(x);
             }
-            Serial.println();
+            //Serial.println();
             for(uint8_t o=0;o<tByte;o++){
               byteTemp  = iRes[o*2];
               iRes[o*2]   = iRes[(o*2)+1];
               iRes[(o*2)+1] = byteTemp;
             }
             for(uint8_t op=0;op<tByte;op++){
-              Serial.print("iRes ");
-              Serial.print(op); 
-              Serial.print(" : ");
-              Serial.println(iRes[op]); 
+              //Serial.print("iRes ");
+              //Serial.print(op); 
+              //Serial.print(" : ");
+              //Serial.println(iRes[op]); 
             }
             uint8_t bitPos = 0;
             uint8_t iResPos = 0;
@@ -419,7 +509,7 @@ void ModbusTCPMaster::readDiscreteInputs(WiFiClient &client, uint8_t slave, uint
                 *(storage + j) = false;
               }
               
-              #ifdef ESP32_CONTROL_DEBUG /*
+              #ifdef ESP32_CONTROL_DEBUG
                 Serial.print("J loop: ");
                 Serial.println(j);
                 Serial.print("bitPos Count: ");
@@ -427,7 +517,7 @@ void ModbusTCPMaster::readDiscreteInputs(WiFiClient &client, uint8_t slave, uint
                 Serial.print("Hexmask: ");
                 Serial.println(hexmask[bitPos]);
                 Serial.print("bitPos Value: ");
-                Serial.println(*(storage + j)); */
+                Serial.println(*(storage + j));
                 Serial.print(*(storage + j));
                 Serial.print(" , ");
               #endif
@@ -438,7 +528,7 @@ void ModbusTCPMaster::readDiscreteInputs(WiFiClient &client, uint8_t slave, uint
                 bitPos = 0;
               }
             }
-            Serial.println();   
+            //Serial.println();   
           }
         }
       }
@@ -446,6 +536,8 @@ void ModbusTCPMaster::readDiscreteInputs(WiFiClient &client, uint8_t slave, uint
     waitCount += 1;
   }
   waitCount = 0;
+  */
+  //delay(5);
 }
 void ModbusTCPMaster::readHoldingRegisters(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity, uint16_t* storage){
   if(_readHoldingRegisters(client,slave, addr, quantity)){
@@ -481,13 +573,14 @@ void ModbusTCPMaster::readHoldingRegisters(WiFiClient &client, uint8_t slave, ui
               Serial.print(',');
             #endif
           }
-			    Serial.println();
+			    //Serial.println();
         }
       }
     }
     waitCount += 1;
   }
   waitCount = 0;
+  //delay(5);
 }
 void ModbusTCPMaster::readInputRegisters(WiFiClient &client, uint8_t slave, uint16_t addr, uint16_t quantity, uint16_t* storage){
   if(_readInputRegisters(client,slave, addr, quantity)){
@@ -499,6 +592,35 @@ void ModbusTCPMaster::readInputRegisters(WiFiClient &client, uint8_t slave, uint
       //Serial.println("Can not read data");
     #endif
   }
+  // Check available responses often
+  if (isWaitingResponse()) {
+    ModbusResponse response = available();
+    if (response) {
+      //if (response.hasError()) {
+      if(response.hasError()){
+        #ifdef ESP32_CONTROL_DEBUG
+          Serial.print("Error : ");
+          Serial.println(ErrorName[response.getErrorCode()]);
+        #endif
+        //return false;
+      } else {
+        #ifdef ESP32_CONTROL_DEBUG
+          Serial.print("Input registers values: ");
+        #endif
+        for (int i = 0; i < quantity; ++i){
+          *(storage + i) = response.getRegister(i);
+          #ifdef ESP32_CONTROL_DEBUG
+            Serial.print(*(storage + i));
+            Serial.print(',');
+          #endif
+        }
+        #ifdef ESP32_CONTROL_DEBUG
+          Serial.println();
+        #endif
+      }
+    }
+  }
+  /*
   if((millis() - lastMills > 20)&&(waitCount < 3)){
     lastMills = millis();
     // Check available responses often
@@ -523,13 +645,15 @@ void ModbusTCPMaster::readInputRegisters(WiFiClient &client, uint8_t slave, uint
               Serial.print(',');
             #endif
           }
-			    Serial.println();
+			    //Serial.println();
         }
       }
     }
     waitCount += 1;
   }
   waitCount = 0;
+  */
+  //delay(5);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

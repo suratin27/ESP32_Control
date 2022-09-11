@@ -12,6 +12,8 @@ const uint8_t Ix10[8] = {39,36,22,23,21,19,18,4};
 const uint8_t Qx10[8] = {13,14,27,26,25,33,32,2};
 const uint8_t Ix10RS[8] = {39,36,35,34,21,19,18,4};
 const uint8_t Qx10RS[8] = {13,14,27,26,25,33,32,2};
+const uint8_t Ix20RXO[8] = {21,19,18,5,36,39,34,35};
+const uint8_t Qx20RXO[8] = {13,14,27,26,25,33,32,2};
 
 //-Set board version
 void setBoardversion(uint8_t v);

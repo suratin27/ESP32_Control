@@ -20,11 +20,11 @@
 
 ModbusTCPMaster master;                       //- ประกาศ Modbus master object
 WiFiClient slave;                             //- ประกาศ Wifi client
-uint8_t slaveIp[] = { 192, 168, 1, 4 };      //- Slave IP Address
+uint8_t slaveIp[] = { 192, 168, 0, 15 };      //- Slave IP Address
 uint16_t slavePort = 502;                     //- Communication port
 
-char ssid[] = "JURAPORN_2.4G";
-char pass[] = "044801060";
+char ssid[] = "Tofahome";
+char pass[] = "0804863439";
 String hostname = "ESP32 Control - RS";
 
 uint32_t lastSentTime = 0;            //- เก็บค่าสถานะการอ่าน-เขียนค่าจาก Slave
@@ -64,7 +64,7 @@ void loop(){
   if (slave.connected()) {
     if (millis() - lastSentTime > 500) {
       lastSentTime = millis();
-      master.readHoldingRegisters(slave,1,0,6,holdingData);    //- อ่าน 6 ค่าจาก slave 1
+      master.readInputRegisters(slave,2,0,6,holdingData);    //- อ่าน 6 ค่าจาก slave 1
 
       float volt = *(float*) &holdingData[0];                  //- แปลงตำแหน่ง 0-1 เป็น float
       float current = *(float*) &holdingData[2];               //- แปลงตำแหน่ง 2-3 เป็น float
@@ -73,7 +73,7 @@ void loop(){
       Serial.println(volt);
       Serial.print("Current: ");
       Serial.println(current);
-      //master.readDiscreteInputs(slave,31,0,25,&coilData);     
+      master.readDiscreteInputs(slave,31,0,25,coilData);     
     }
   }  //
 }
