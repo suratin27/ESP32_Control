@@ -1,4 +1,5 @@
 #include "ESP32Monitor.h"
+#include <AsyncElegantOTA.h>
 
 long lastMonitor = 0;
 long monitorPeroid = 500;
@@ -106,6 +107,8 @@ void setupWebserver(uint8_t _boardversion){
     client->send("hello!", NULL, millis(), 10000);
   });
   server.addHandler(&events);
+  AsyncElegantOTA.begin(&server);
+
   server.begin();
   Serial.println("--- > ESP32 Monitor server started");
 }

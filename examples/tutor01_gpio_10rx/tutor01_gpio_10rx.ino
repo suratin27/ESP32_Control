@@ -28,7 +28,7 @@ const uint8_t TX2 = 23;       //- ขา TX ของ rs485
 void setup(){
   Serial.begin(9600);         //- Serial0 คือ USB port
   Serial2.begin(115200,SERIAL_8N1,RX2,TX2); 
-  initIO();                   //- Init อินพุท และ เอ้าพุท
+  initIO(BOARD_VERSION);                   //- Init อินพุท และ เอ้าพุท
   setAllOutput();
 }
 

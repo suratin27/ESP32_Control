@@ -1,6 +1,5 @@
-#include <WiFi.h>
-
 #define ESP32_CONTROL_10RX         //- Define ESP32 Control v1.0RX board
+#define USE_WEB_MONITOR            //- Ask board to Use Web monitor function
 #include <ESP32Control.h>
 
 /*---------------------------------------------------------------------
@@ -14,10 +13,14 @@
 ---------------------------------------------------------------------*/
 long lastval =0;
 uint8_t oVal = 0;
-const char* ssid = "JURAPORN_2.4G";
-const char* password = "044801060";
+const char* ssid = "Tofahome";
+const char* password = "0804863439";
+
+const char *ssidServ = "Solar Monitor 32U";
+const char *passwordServ = "12345678";
 
 void initWiFi(){
+  
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   delay(150);
@@ -31,6 +34,13 @@ void initWiFi(){
   Serial.println(ssid);
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
+  
+  /*  ----------> AP Mode
+  WiFi.softAP(ssidServ, passwordServ);
+  Serial.println();
+  Serial.print("IP address: ");
+  Serial.println(WiFi.softAPIP());
+  */
 }
 
 void setup(){
@@ -51,9 +61,9 @@ void setup(){
 }
 
 void loop(){
-  if(millis() - lastval > 1000){
+  if(millis() - lastval > 2000){
     lastval = millis();
-    if(oVal < 8){
+    if(oVal < 4){
       clearAllOutput();
       setOutput(oVal);
       clearMValue();
@@ -63,5 +73,6 @@ void loop(){
       oVal = 0;
     }
   }
+  toggleSTS(1);
   webMonTask();
 }

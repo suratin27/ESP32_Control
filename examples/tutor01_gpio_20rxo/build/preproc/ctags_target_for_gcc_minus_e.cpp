@@ -17,15 +17,45 @@ toggleSTS(uint8_t _led);      - สลับสถานะของ LED Status 
 clearSTS();                   - เคลียร์สถานะ LED Status
 -------------------------------------------------------------------------*/
 
+/*-------------------------------------------------------------------
+                              OLED Function
+-------------------------------------------------------------------*/
+# 22 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_20rxo\\tutor01_gpio_20rxo.ino" 2
+# 23 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_20rxo\\tutor01_gpio_20rxo.ino" 2
+# 24 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_20rxo\\tutor01_gpio_20rxo.ino" 2
+# 25 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_20rxo\\tutor01_gpio_20rxo.ino" 2
 
+
+
+
+Adafruit_SH1106 display(16, 17);
+
+void initOLED(){
+  display.begin(0x2, 0x3C);
+  display.clearDisplay();
+  display.display();
+  //set the text size, color, cursor position and displayed text
+  delay(1000);
+  display.setTextSize(2);
+  display.setTextColor(1);
+  display.setCursor(5, 25);
+  display.println("ESP 2.0RXO");
+  display.display();
+}
+
+//------------------------------------------------------------------
 unsigned long lastime = 0;
 bool status = false;
-const int peroid = 200;
+const int peroid = 50;
 uint8_t OutPos = 0;
 const uint8_t RX2 = 22; //- ขา RX ของ rs485
 const uint8_t TX2 = 23; //- ขา TX ของ rs485
 
+
+
 void setup(){
+  initOLED();
+
   Serial.begin(9600); //- Serial0 คือ USB port
   Serial2.begin(115200,0x800001c,RX2,TX2);
   initIO(3); //- Init อินพุท และ เอ้าพุท
@@ -75,5 +105,5 @@ void loop(){
     Serial.println("7");
     Serial2.println("7");
   }
-  delay(100);
+  //delay(100);
 }

@@ -65,80 +65,46 @@
       <section class="container section section__height" id="home">
           <h2 id = 'product_name' class="section__title">ESP32 Control Monitor v 1.0RX </h2>
           <div id='esp-element' class="element">
-            <img src="esp_control_10.png" alt="esp_control_10"> 
-            <div class="esp_control_lamp">
-              <div class="ioa_contain">
-                <div class="io_contain">
-                  <div class="io_lamp" id="i0_lamp"></div>
-                  <p class="io_txt">I0</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="i1_lamp"></div>
-                  <p class="io_txt">I1</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="i2_lamp"></div>
-                  <p class="io_txt">I2</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="i3_lamp"></div>
-                  <p class="io_txt">I3</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="i4_lamp"></div>
-                  <p class="io_txt">I4</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="i5_lamp"></div>
-                  <p class="io_txt">I5</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="i6_lamp"></div>
-                  <p class="io_txt">I6</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="i7_lamp"></div>
-                  <p class="io_txt">I7</p>
-                </div>
-              </div>
-              <div class="ioa_contain">
-                <div class="io_contain">
-                  <div class="io_lamp" id="o0_lamp"></div>
-                  <p class="io_txt">O0</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="o1_lamp"></div>
-                  <p class="io_txt">O1</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="o2_lamp"></div>
-                  <p class="io_txt">O2</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="o3_lamp"></div>
-                  <p class="io_txt">O3</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="o4_lamp"></div>
-                  <p class="io_txt">O4</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="o5_lamp"></div>
-                  <p class="io_txt">O5</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="o6_lamp"></div>
-                  <p class="io_txt">O6</p>
-                </div>
-                <div class="io_contain">
-                  <div class="io_lamp" id="o7_lamp"></div>
-                  <p class="io_txt">O7</p>
-                </div>
-              </div>
-              <div class="ioa_contain">
-                <h3 class="lamp_name">I/O Status Lamp</h2>
-              </div>
+            <div class="board">
+              <img id="base_board" class="board-item" src="esp32_control_rx_or.png" alt="esp32_control_rx_or"> 
+              
+              <img id="board_sts" class="board-item" src="esp32_control_rx_sts-01.png"> 
+              
             </div>
+            <div class="esp_control_item">
+              <div class="ioa_contain">
+                <h3 class="lamp_name">BOARD INFORMATIONS</h3>
+              </div>
+              <div class="ioa_contain col">
+                <div class="col-item">
+                  <h4>Board Model</h4>
+                  <h4>cpu</h4>
+                  <h4>flash size</h4>
+                  <h4>free size</h4>
+                  <h4>memory size</h4>
+                  <h4>free heap size</h4>
+                  <h4>wifi mode</h4>
+                  <h4>ip address</h4>
+                  <h4>host name</h4>
+                  <h4>rs485 mode</h4>
+                  <h4>slave address</h4>
+                </div>
+                <div class="col-item">
+                  <h4 id="_board-model">esp32 control 1.0rx</h4>
+                  <h4 id="_board-cpu">esp32 wroom 30u</h4>
+                  <h4 id="_board-mem">0.0 mb</h4>
+                  <h4 id="_board-free-mem">0.0 mb</h4>
+                  <h4 id="_board-ram">000 kb</h4>
+                  <h4 id="_board-free-ram">000 kb</h4>
+                  <h4 id="_board-wifi-mode">------</h4>
+                  <h4 id="_board-ip">0.0.0.0</h4>
+                  <h4 id="_board-hostname">------</h4>
+                  <h4 id="_board-rs485-mode">------</h4>
+                  <h4 id="_board-slave-id">-</h4>
+                </div>
+              </div>
+            </div> 
+            
           </div>
       </section>
 

@@ -90,7 +90,7 @@ void initIO(uint8_t _io){
   Serial.println("-----------------------.");
   Serial.println("Init Working LED Status.");
   pinMode(STS_LED,OUTPUT);
-  digitalWrite(STS_LED,LOW);
+  digitalWrite(STS_LED,HIGH);
   
   Serial.println("Init - OK.");
   Serial.println("-----------------------.");

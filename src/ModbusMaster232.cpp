@@ -1227,8 +1227,8 @@ uint16_t ModbusMaster232::readInputRegistersI(uint8_t _slave,uint16_t _address){
   return Temp;
 }
 void ModbusMaster232::readHoldingRegistersIn(uint8_t _slave,uint16_t _address,uint16_t _readCount,uint16_t* pArr){
-  uint16_t Temp[_readCount];
-  uint16_t *pTemp;
+  //uint16_t Temp[_readCount];
+  //uint16_t *pTemp;
   
   setSlaveAddress(_slave); 
 
@@ -1245,21 +1245,23 @@ void ModbusMaster232::readHoldingRegistersIn(uint8_t _slave,uint16_t _address,ui
     }
   }while((readSts != ku8MBSuccess)&&(retryCount < tryCount));
 
-  pTemp = Temp;
+  //pTemp = Temp;
   
   delay(5);
   
   if(readSts == ku8MBSuccess){
     for(uint8_t j=0;j<_readCount;j++){
-      Temp[j] = getResponseBuffer(j);
+      //Temp[j] = getResponseBuffer(j);
+      *(pArr+j) = getResponseBuffer(j);
     }    
   }else if(readSts != ku8MBSuccess){
     for(uint8_t i=0;i<_readCount;i++){
-      Temp[i] = 0xFFFF;
+      //Temp[i] = 0xFFFF;
+      *(pArr+i) = 0xFFFF;
     }
   }
   
-  pArr = Temp;
+  //pArr = Temp;
   
   clearResponseBuffer();
   

@@ -1,3 +1,5 @@
+# ESP32_Control v 1.2.7.1
+- Bug fixed for Modbus function readHoldingRegistorI
 # ESP32_Control v 1.2.7
 - GPIO Lib updated
 # ESP32_Control v 1.2.6

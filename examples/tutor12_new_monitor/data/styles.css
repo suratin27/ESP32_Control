@@ -65,10 +65,8 @@ ul {
 a {
   text-decoration: none;
 }
-
-img {
-  max-width: 100%;
-  height: auto;
+h4{
+  font-size: 0.9rem;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
@@ -214,6 +212,9 @@ img {
   .element{
     flex-flow: column !important;
   }
+  img{
+    max-width: 100%;
+  }
 }
 
 /* For medium devices */
@@ -222,11 +223,17 @@ img {
     justify-content: center;
     column-gap: 3rem;
   }
+  img{
+    max-width: 78%;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .element{
     flex-flow: column !important;
+  }
+  img{
+    max-width: 69%;
   }
 }
 
@@ -255,6 +262,13 @@ img {
     color: var(--first-color);
   }
 
+  /*
+      Set Img to 69%
+  */
+  img{
+    max-width: 80%;
+  }
+
   /* First design, remove if you choose the minimalist design */
   .active-link::before {
     content: '';
@@ -278,6 +292,9 @@ img {
     margin-left: auto;
     margin-right: auto;
   }
+  img{
+    max-width: 90%;
+  }
 }
 
 /*=============== TF Part ===============*/
@@ -296,7 +313,7 @@ img {
   object-fit: contain;
   margin: 20px;
 }
-.esp_control_lamp{
+.esp_control_item{
   position: relative;
   /*right: 10vw;*/
   border: #0033ff; /*
@@ -304,12 +321,26 @@ img {
   background-color: transparent;
   box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
   margin: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
+  width: 80%;
+  margin: 3rem 1rem 3rem 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .ioa_contain{
-  margin: 30px 15px 40px 15px;
+  margin: 30px 15px 10px 15px;
   display: flex;
   justify-content: space-around;
+  text-transform: uppercase;
+}
+.col{
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px 10px;
+  
+}
+.col-item h4{
+  margin: 10px 10px 10px 10px;
 }
 .io_contain{
   margin: 0.5em 0.7em;
@@ -407,4 +438,26 @@ td:focus{
 .content-table tbody tr.active-row {
   font-weight: bold;
   color: #009879;
+}
+
+/*=============== Lamp render Part ===============*/
+.board{
+  position: relative;
+  margin: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board-item{
+  position: absolute;
+  align-items: center;
+  top: 0;
+}
+#base_board{
+  z-index: 0;
+}
+#board_sts{
+  z-index: 1;
+  mix-blend-mode:plus-lighter;
 }

@@ -6,7 +6,7 @@
 
 /*-------------------------------------------------------------------------
 
-initIO();                     - เริ่มต้นการใช้งาน I/O โดยถ้าใช้ v1.0 ให้ใส่พารามิเตอร์ 1 แต่ถ้าใช้ 1.0RS ไม่ต้องใส่อะไร
+initIO();                     - เริ่มต้นการใช้งาน I/O โดยใส่พารามิเตอร์ คือ BOARD_VERSION
 setLed();                     - เซ็ตค่า   STS LED 
 resetLed();                   - รีเซ็ตค่า  STS LED 
 toggleLed();                  - สลับสถานะของ   STS LED 
@@ -21,15 +21,20 @@ clearSTS();                   - เคลียร์สถานะ LED Status
 
 unsigned long lastime = 0;
 bool status = false;
-const int peroid = 3000;
+const int peroid = 1000;
 uint8_t OutPos = 0;
 const uint8_t RX2 = 22;       //- ขา RX ของ rs485
 const uint8_t TX2 = 23;       //- ขา TX ของ rs485
 
+#line 26 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_rlx-32u\\tutor01_gpio_rlx-32u.ino"
+void setup();
+#line 36 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_rlx-32u\\tutor01_gpio_rlx-32u.ino"
+void loop();
+#line 26 "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_rlx-32u\\tutor01_gpio_rlx-32u.ino"
 void setup(){
   Serial.begin(9600);         //- Serial0 คือ USB port
-  Serial2.begin(115200,SERIAL_8N1,RX2,TX2); 
-  initIO();                   //- Init อินพุท และ เอ้าพุท
+  Serial2.begin(9600,SERIAL_8N1,RX2,TX2); 
+  initIO(BOARD_VERSION);                   //- Init อินพุท และ เอ้าพุท
   setOutput(0);
   setOutput(1);
   setOutput(2);
@@ -43,7 +48,8 @@ void loop(){
       toggleSTS(3);         //- toggle Status LED 3 --> ตรงบริเวณ MCU
       toggleSTS(2);         //- toggle Status LED 2 --> ตรงบริเวณ MCU
       toggleSTS(1);         //- toggle Status LED 1 --> ตรงบริเวณ MCU
-
+      //Serial.println("Value");
+      //Serial2.println("Value");
       //toggleOutput(0);
       //toggleOutput(1);
       //toggleOutput(2);
