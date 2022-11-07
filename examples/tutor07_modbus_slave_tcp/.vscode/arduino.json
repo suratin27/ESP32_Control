@@ -2,6 +2,6 @@
     "configuration": "PartitionScheme=default,FlashMode=qio,FlashFreq=80,UploadSpeed=921600,DebugLevel=none",
     "board": "esp32:esp32:esp32wrover",
     "sketch": "tutor07_modbus_slave_tcp.ino",
-    "port": "COM4",
+    "port": "COM3",
     "output": "./build"
 }

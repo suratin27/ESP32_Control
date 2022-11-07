@@ -21,31 +21,6 @@
   },
   {
     "Sourcefile": "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_10rx\\build\\sketch\\tutor01_gpio_10rx.ino.cpp",
-    "Include": "AsyncTCP.h",
-    "Includepath": "E:\\Arduino_Lib\\libraries\\AsyncTCP-master\\src"
-  },
-  {
-    "Sourcefile": "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_10rx\\build\\sketch\\tutor01_gpio_10rx.ino.cpp",
-    "Include": "ESPAsyncWebServer.h",
-    "Includepath": "E:\\Arduino_Lib\\libraries\\ESPAsyncWebServer-master\\src"
-  },
-  {
-    "Sourcefile": "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_10rx\\build\\sketch\\tutor01_gpio_10rx.ino.cpp",
-    "Include": "FS.h",
-    "Includepath": "C:\\Users\\super\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.4\\libraries\\FS\\src"
-  },
-  {
-    "Sourcefile": "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_10rx\\build\\sketch\\tutor01_gpio_10rx.ino.cpp",
-    "Include": "Arduino_JSON.h",
-    "Includepath": "E:\\Arduino_Lib\\libraries\\Arduino_JSON-master\\src"
-  },
-  {
-    "Sourcefile": "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_10rx\\build\\sketch\\tutor01_gpio_10rx.ino.cpp",
-    "Include": "SPIFFS.h",
-    "Includepath": "C:\\Users\\super\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.4\\libraries\\SPIFFS\\src"
-  },
-  {
-    "Sourcefile": "e:\\Arduino_Lib\\libraries\\ESP32_Control\\examples\\tutor01_gpio_10rx\\build\\sketch\\tutor01_gpio_10rx.ino.cpp",
     "Include": "",
     "Includepath": ""
   },
@@ -68,6 +43,41 @@
     "Sourcefile": "E:\\Arduino_Lib\\libraries\\ESP32_Control\\src\\ESP32ControlSchedule.cpp",
     "Include": "",
     "Includepath": ""
+  },
+  {
+    "Sourcefile": "E:\\Arduino_Lib\\libraries\\ESP32_Control\\src\\ESP32Monitor.cpp",
+    "Include": "AsyncTCP.h",
+    "Includepath": "E:\\Arduino_Lib\\libraries\\AsyncTCP-master\\src"
+  },
+  {
+    "Sourcefile": "E:\\Arduino_Lib\\libraries\\ESP32_Control\\src\\ESP32Monitor.cpp",
+    "Include": "ESPAsyncWebServer.h",
+    "Includepath": "E:\\Arduino_Lib\\libraries\\ESPAsyncWebServer-master\\src"
+  },
+  {
+    "Sourcefile": "E:\\Arduino_Lib\\libraries\\ESP32_Control\\src\\ESP32Monitor.cpp",
+    "Include": "FS.h",
+    "Includepath": "C:\\Users\\super\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.4\\libraries\\FS\\src"
+  },
+  {
+    "Sourcefile": "E:\\Arduino_Lib\\libraries\\ESP32_Control\\src\\ESP32Monitor.cpp",
+    "Include": "Arduino_JSON.h",
+    "Includepath": "E:\\Arduino_Lib\\libraries\\Arduino_JSON-master\\src"
+  },
+  {
+    "Sourcefile": "E:\\Arduino_Lib\\libraries\\ESP32_Control\\src\\ESP32Monitor.cpp",
+    "Include": "SPIFFS.h",
+    "Includepath": "C:\\Users\\super\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.4\\libraries\\SPIFFS\\src"
+  },
+  {
+    "Sourcefile": "E:\\Arduino_Lib\\libraries\\ESP32_Control\\src\\ESP32Monitor.cpp",
+    "Include": "AsyncElegantOTA.h",
+    "Includepath": "E:\\Arduino_Lib\\libraries\\AsyncElegantOTA\\src"
+  },
+  {
+    "Sourcefile": "E:\\Arduino_Lib\\libraries\\ESP32_Control\\src\\ESP32Monitor.cpp",
+    "Include": "Update.h",
+    "Includepath": "C:\\Users\\super\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.4\\libraries\\Update\\src"
   },
   {
     "Sourcefile": "E:\\Arduino_Lib\\libraries\\ESP32_Control\\src\\ESP32Monitor.cpp",
@@ -155,6 +165,11 @@
     "Includepath": ""
   },
   {
+    "Sourcefile": "E:\\Arduino_Lib\\libraries\\NTPClient-master\\NTPClient.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
     "Sourcefile": "E:\\Arduino_Lib\\libraries\\AsyncTCP-master\\src\\AsyncTCP.cpp",
     "Include": "",
     "Includepath": ""
@@ -230,7 +245,12 @@
     "Includepath": ""
   },
   {
-    "Sourcefile": "E:\\Arduino_Lib\\libraries\\NTPClient-master\\NTPClient.cpp",
+    "Sourcefile": "C:\\Users\\super\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.4\\libraries\\Update\\src\\HttpsOTAUpdate.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "C:\\Users\\super\\AppData\\Local\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.4\\libraries\\Update\\src\\Updater.cpp",
     "Include": "",
     "Includepath": ""
   }

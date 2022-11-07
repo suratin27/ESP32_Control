@@ -3,5 +3,5 @@
     "board": "esp32:esp32:esp32",
     "sketch": "tutor01_gpio_20rxo.ino",
     "output": "./build",
-    "port": "COM4"
+    "port": "COM3"
 }
