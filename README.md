@@ -1,3 +1,5 @@
+# ESP32_Control v 1.2.8.1
+- Syntex hilight for readInputRegistorsI
 # ESP32_Control v 1.2.7.1
 - Bug fixed for Modbus function readHoldingRegistorI
 # ESP32_Control v 1.2.7
